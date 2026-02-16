@@ -143,7 +143,7 @@ const Features = () => {
       <div className="container-narrow max-w-4xl">
         <ScrollReveal>
           <h2 className="text-3xl font-bold mb-6">Bonuses & Promotions</h2>
-          <p className="text-muted-foreground mb-4">The app offers a comprehensive bonus system for both new and existing users. Welcome bonuses, reload bonuses, cashback offers, free spins, and loyalty programs are all accessible from the promotions section. Mobile-exclusive bonuses are available for users who <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">download the app</a>.</p>
+          <p className="text-muted-foreground mb-4">The app offers a comprehensive bonus system for both new and existing users. Welcome bonuses, reload bonuses, cashback offers, free spins, and loyalty programs are all accessible from the promotions section. Mobile-exclusive bonuses are available for users who <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">download the app</a>.</p>
         </ScrollReveal>
         <GlowOnScroll>
           <div className="glass-card p-6 mb-6">

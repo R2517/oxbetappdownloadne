@@ -170,7 +170,7 @@ const LiveCasino = () => {
         <div className="container-narrow max-w-4xl">
           <ScrollReveal>
             <h2 className="text-3xl font-bold mb-6">Live Casino vs Regular Casino</h2>
-            <p className="text-muted-foreground mb-6">Understanding the differences helps you choose the right experience. Both options are available in the <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">1xBet app</a>.</p>
+            <p className="text-muted-foreground mb-6">Understanding the differences helps you choose the right experience. Both options are available in the <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">1xBet app</a>.</p>
           </ScrollReveal>
           <GlowOnScroll>
             <div className="glass-card overflow-hidden overflow-x-auto">

@@ -55,7 +55,7 @@ const Header = () => {
 
         <div className="flex items-center gap-2">
           <CountrySwitcher />
-          <a href="#AFFILIATE_LINK_PLACEHOLDER" className="btn-gradient px-4 py-2.5 rounded-xl text-sm font-semibold text-foreground blue-glow hidden sm:inline-flex whitespace-nowrap">
+          <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="btn-gradient px-4 py-2.5 rounded-xl text-sm font-semibold text-foreground blue-glow hidden sm:inline-flex whitespace-nowrap">
             Download Now
           </a>
           <button

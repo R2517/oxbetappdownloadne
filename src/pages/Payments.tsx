@@ -94,7 +94,7 @@ const Payments = () => {
               The 1xBet app supports over 50 payment methods to ensure users worldwide can deposit and withdraw with ease. From traditional bank cards to cutting-edge cryptocurrency, the platform covers every major payment option with fast processing times and zero platform fees on most methods.
             </p>
             <p className="text-muted-foreground mb-6">
-              Deposits are processed instantly for most methods, and withdrawals are among the fastest in the industry — particularly for e-wallets and crypto. The app's payment section is intuitive and guides you through each transaction step by step. <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the app</a> to access all payment options.
+              Deposits are processed instantly for most methods, and withdrawals are among the fastest in the industry — particularly for e-wallets and crypto. The app's payment section is intuitive and guides you through each transaction step by step. <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">Download the app</a> to access all payment options.
             </p>
             <CTAButton text="Download & Deposit" />
           </ScrollReveal>
@@ -209,7 +209,7 @@ const Payments = () => {
         </StaggerContainer>
         <ScrollReveal delay={0.1}>
           <p className="text-muted-foreground">
-            Learn more about securing your account in our <Link to="/login-guide" className="text-primary hover:underline">login and security guide</Link>. Ready to start? <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the app</a> and make your first deposit.
+            Learn more about securing your account in our <Link to="/login-guide" className="text-primary hover:underline">login and security guide</Link>. Ready to start? <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">Download the app</a> and make your first deposit.
           </p>
         </ScrollReveal>
       </div>

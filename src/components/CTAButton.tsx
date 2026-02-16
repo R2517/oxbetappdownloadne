@@ -17,7 +17,9 @@ const CTAButton = ({ text = "Download Now", variant = "default", size = "lg", cl
   if (variant === "outline") {
     return (
       <a
-        href="#AFFILIATE_LINK_PLACEHOLDER"
+        href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97"
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
         className={`inline-flex items-center justify-center rounded-xl font-semibold border border-primary/50 text-primary hover:bg-primary/10 hover:border-primary transition-all ${sizeClasses} ${className}`}
       >
         {displayText}
@@ -27,7 +29,9 @@ const CTAButton = ({ text = "Download Now", variant = "default", size = "lg", cl
 
   return (
     <a
-      href="#AFFILIATE_LINK_PLACEHOLDER"
+      href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97"
+      target="_blank"
+      rel="nofollow sponsored noopener noreferrer"
       className={`inline-flex items-center justify-center rounded-xl font-semibold btn-gradient text-foreground blue-glow hover:blue-glow-strong transition-all ${sizeClasses} ${className}`}
     >
       {displayText}

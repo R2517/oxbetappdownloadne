@@ -95,7 +95,7 @@ const SlotsGames = () => {
               The games section on the 1xBet app goes far beyond traditional slots. Crash games, instant win titles, and exclusive 1xGames bring fast-paced entertainment with simple mechanics and potentially massive multipliers. Whether you have 5 minutes or 5 hours, there's always a game that fits your mood and budget.
             </p>
             <p className="text-muted-foreground mb-6">
-              Every game is available on mobile with optimized touch controls, crisp graphics, and smooth performance. Browse by category, provider, or popularity to find your next favorite title. Ready to explore? <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the app</a> and start playing immediately.
+              Every game is available on mobile with optimized touch controls, crisp graphics, and smooth performance. Browse by category, provider, or popularity to find your next favorite title. Ready to explore? <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">Download the app</a> and start playing immediately.
             </p>
             <CTAButton text="Download & Play" />
           </ScrollReveal>

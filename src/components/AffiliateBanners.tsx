@@ -73,3 +73,14 @@ export const BottomBanner = () => (
     />
   </div>
 );
+
+export const CenterBanner = () => (
+  <div className="w-full max-w-4xl mx-auto px-4 my-8">
+    <LazyIframe
+      src="https://refbanners.com/I?tag=d_5260822m_151645c_&site=5260822&ad=151645"
+      width="100%"
+      height="250"
+      className="rounded-xl overflow-hidden"
+    />
+  </div>
+);

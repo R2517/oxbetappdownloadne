@@ -5,6 +5,7 @@ import { Shield, Smartphone, Monitor, ChevronRight, Download as DownloadIcon, Ch
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { useGeo } from "@/contexts/GeoContext";
 import { getPageHero, getGeoSchema } from "@/lib/geo-content";
+import { CenterBanner } from "@/components/AffiliateBanners";
 
 const Download = () => {
   const { country } = useGeo();
@@ -38,6 +39,8 @@ const Download = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <CenterBanner />
 
     {/* Version Table */}
     <section className="section-padding">
@@ -128,6 +131,8 @@ const Download = () => {
         </ScrollReveal>
       </div>
     </section>
+
+    <CenterBanner />
 
     {/* System Requirements */}
     <section className="section-padding bg-secondary/20">

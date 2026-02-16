@@ -6,6 +6,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useGeo } from "@/contexts/GeoContext";
 import { getPageHero, getGeoSchema } from "@/lib/geo-content";
+import { CenterBanner } from "@/components/AffiliateBanners";
 import liveCasinoHero from "@/assets/live-casino-hero.jpg";
 
 const liveGames = [
@@ -79,6 +80,8 @@ const LiveCasino = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <CenterBanner />
 
       {/* Hero Image + Overview */}
       <section className="section-padding">
@@ -222,6 +225,8 @@ const LiveCasino = () => {
           </StaggerContainer>
         </div>
       </section>
+
+      <CenterBanner />
 
       {/* FAQ */}
       <section className="section-padding gradient-section">

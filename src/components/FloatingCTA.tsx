@@ -1,19 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-
-const ctaVariations = [
-  "Get $150 Bonus — Download Now",
-  "Install App & Claim Bonus",
-  "Start Now — Exclusive Bonus",
-  "Download & Unlock Rewards",
-  "Play Now — Limited Offer",
-];
+import { useGeo } from "@/contexts/GeoContext";
 
 const FloatingCTA = () => {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
-  const [variantIndex] = useState(() => Math.floor(Math.random() * ctaVariations.length));
+  const { country } = useGeo();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +19,8 @@ const FloatingCTA = () => {
   }, [dismissed]);
 
   if (dismissed) return null;
+
+  const ctaText = `Install Now — Get ${country.bonusAmount} Bonus`;
 
   return (
     <AnimatePresence>
@@ -42,7 +37,7 @@ const FloatingCTA = () => {
               href="#AFFILIATE_LINK_PLACEHOLDER"
               className="flex-1 text-center text-sm font-bold text-foreground"
             >
-              {ctaVariations[variantIndex]}
+              {ctaText}
             </a>
             <button
               onClick={() => setDismissed(true)}

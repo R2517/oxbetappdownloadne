@@ -4,6 +4,7 @@ import CTAButton from "@/components/CTAButton";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { Shield, Zap, RefreshCw, Smartphone, Star, Trophy, Gamepad2, CreditCard, Users, TrendingUp, Clock, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useGeo } from "@/contexts/GeoContext";
 import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
 import casinoHero from "@/assets/casino-hero.jpg";
 
@@ -37,6 +38,7 @@ const faqPreview = [
 ];
 
 const Index = () => {
+  const { country } = useGeo();
   return (
     <Layout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -90,7 +92,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <CTAButton text="Download Now" size="lg" />
+              <CTAButton text="Download Now" size="lg" showBonus />
               <CTAButton text="Explore Features" variant="outline" size="lg" />
             </motion.div>
             <motion.div

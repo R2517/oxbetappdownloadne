@@ -1,68 +1,52 @@
 
 
-# 1xBet App Download — Authority Website
+# Website Improvement Plan
 
-## Overview
-A premium, dark-themed informational website at **1xbetapp.download** serving as an authoritative product guide portal for the 1xBet mobile app ecosystem. No backend needed — this is a fully static, SEO-optimized, content-rich frontend site.
+## Issues Found and Proposed Fixes
 
----
+### 1. Hero Section — Missing Background Image
+The hero section currently has no background image, just a dark gradient. Adding a subtle hero background image (or a dynamic one per category) would make it look much more premium and professional. A semi-transparent overlay keeps text readable.
 
-## Design System
-- **Theme**: Dark luxury — black/deep navy backgrounds, gold/yellow accents
-- **Effects**: Glassmorphism cards, soft neon glows, premium shadows, rounded buttons
-- **Typography**: Clean sans-serif, strong hierarchy, high contrast
-- **Layout**: Mobile-first responsive, sticky header with CTA, smooth scroll animations
+### 2. Hero Section — Country Name Not Showing for US Default
+When the default country is US, the hero shows generic text without mentioning any country. The description paragraph also doesn't include the country name — it uses the generic version instead of the geo-localized one from the content pack.
 
----
+### 3. Too Many Center Banners on Homepage
+There are 2 center banners on the homepage which breaks the content flow. Reduce to 1 center banner placed mid-page for cleaner experience.
 
-## Pages & Content
+### 4. Missing App Screenshots / Mockups
+There are no app screenshots or device mockups anywhere on the homepage. Adding a phone mockup in the hero or below it would massively increase trust and conversion.
 
-### 1. Homepage (Authority Hub)
-- Hero with H1 keyword placement, trust badges, primary CTA
-- Sections: App Overview, Sports Betting, Casino, Live Casino, 1xGames, Features Grid, Bonuses, Screenshots Gallery, Installation Steps, Why Choose, UX Highlights, FAQ Preview, Final CTA
-- ~1200 words, keyword-optimized, 12+ internal links to other pages
+### 5. Footer — Too Plain
+The footer lacks visual appeal. Could benefit from:
+- A gradient top border or glow effect
+- Social proof numbers (e.g., "10M+ Downloads", "40+ Sports")
+- A mini CTA section above the footer links
 
-### 2. App Download Page (Money Page)
-- 1200+ words covering Android/APK/iOS installation, version table, system requirements, safety, troubleshooting
-- Multiple CTAs throughout, primary conversion target
+### 6. FAQ Section — Not Using Accordion
+The FAQ preview on homepage shows static text blocks. Using an expandable accordion would look more professional and save space.
 
-### 3. Betting & Casino Features Page (Topical Authority)
-- 1500+ words covering Sports Betting (bet types, odds, live, cashout), Casino (slots, tables, jackpots), Live Casino (dealers, streaming), 1xGames (crash, instant), Bonuses, Payments, UX
-- Tables, bullet points, rich content sections
+### 7. Missing "Back to Top" Button
+Long pages have no way to quickly scroll back to top.
 
-### 4. Login / Account Guide
-- 900+ words: Registration, login, verification, password recovery, security, troubleshooting, responsible usage
-
-### 5. Help / FAQ Page
-- 20-25 questions across download, installation, login, payments, features, safety, compatibility
-- FAQ Schema JSON-LD markup
-
-### 6. Support Pages
-- About, Contact (with form), Privacy Policy, Terms & Conditions, Disclaimer
+### 8. Page Speed — Hero Background Animation
+The large blur animation in the hero (`w-[600px] h-[400px] blur-[120px]`) can cause performance issues on lower-end devices. Should add `will-change: transform` or simplify.
 
 ---
 
-## SEO & Technical
-- Semantic HTML5, meta titles/descriptions, canonical tags, Open Graph, Twitter cards
-- Breadcrumb navigation with schema
-- JSON-LD: Organization, SoftwareApplication, FAQ, Breadcrumb schemas
-- Clean readable URLs
-- sitemap.xml and robots.txt
-- Keyword strategy with primary, secondary, long-tail, and semantic keywords placed per the density framework
+## Technical Implementation
 
-## Internal Linking
-- Hub-and-spoke closed-loop architecture — every page links to Download 3-5 times
-- Contextual paragraph links with mixed anchor text diversity
-- No page more than 2 clicks from homepage
-- Footer links to all pages
+### Files to modify:
+- **`src/pages/Index.tsx`** — Add hero background image, remove 1 center banner, improve FAQ to accordion
+- **`src/components/layout/Footer.tsx`** — Add social proof stats row, gradient border, mini CTA
+- **`src/components/BackToTop.tsx`** (new) — Floating scroll-to-top button
+- **`src/components/layout/Layout.tsx`** — Include BackToTop component
+- **`src/index.css`** — Add `will-change` optimization for hero animation
 
-## Conversion Optimization
-- CTA buttons in hero, mid-content, after every major section, and footer
-- All CTAs link to `#AFFILIATE_LINK_PLACEHOLDER`
-- Button texts: "Download Now", "Get Latest Version", "Install App", "Open Guide"
-
-## Performance
-- Optimized CSS, minimal JS, lazy-loaded images, preloaded fonts
-- Target Lighthouse 90+, load time under 2 seconds
-- Placeholder images with optimized alt text throughout
+### Priority order:
+1. Fix hero to show country name properly + add background image
+2. Reduce center banners from 2 to 1
+3. Enhance footer with stats and better styling
+4. Add back-to-top button
+5. Convert FAQ preview to accordion
+6. Performance optimization
 

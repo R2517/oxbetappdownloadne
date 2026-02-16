@@ -16,6 +16,11 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Disclaimer = lazy(() => import("./pages/Disclaimer"));
+const Casino = lazy(() => import("./pages/Casino"));
+const LiveCasino = lazy(() => import("./pages/LiveCasino"));
+const SlotsGames = lazy(() => import("./pages/SlotsGames"));
+const SportsBetting = lazy(() => import("./pages/SportsBetting"));
+const Payments = lazy(() => import("./pages/Payments"));
 
 const queryClient = new QueryClient();
 
@@ -30,6 +35,11 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/download" element={<Download />} />
             <Route path="/features" element={<Features />} />
+            <Route path="/sports-betting" element={<SportsBetting />} />
+            <Route path="/casino" element={<Casino />} />
+            <Route path="/live-casino" element={<LiveCasino />} />
+            <Route path="/slots-games" element={<SlotsGames />} />
+            <Route path="/payments" element={<Payments />} />
             <Route path="/login-guide" element={<LoginGuide />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />

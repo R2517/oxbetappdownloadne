@@ -57,10 +57,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        gold: {
-          DEFAULT: "hsl(45 93% 47%)",
-          light: "hsl(45 80% 55%)",
-          dark: "hsl(45 93% 35%)",
+        neon: {
+          blue: "#1E88E5",
+          cyan: "#00E5FF",
+          light: "#29B6F6",
+          success: "#00C853",
         },
       },
       borderRadius: {
@@ -82,8 +83,8 @@ export default {
           to: { opacity: "1", transform: "translateY(0)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(45 93% 47% / 0.2)" },
-          "50%": { boxShadow: "0 0 40px hsl(45 93% 47% / 0.4)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(41,182,246,0.2)" },
+          "50%": { boxShadow: "0 0 40px rgba(41,182,246,0.5)" },
         },
       },
       animation: {

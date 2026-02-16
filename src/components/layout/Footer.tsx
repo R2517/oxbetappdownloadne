@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Footer = () => (
-  <footer className="border-t border-border/50 bg-card/30">
+  <footer className="border-t border-border/30" style={{ background: "#05070D" }}>
     <div className="container-narrow px-4 py-12">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
         <div>
@@ -33,7 +33,7 @@ const Footer = () => (
           <h4 className="font-semibold text-foreground mb-4">Get the App</h4>
           <a
             href="#AFFILIATE_LINK_PLACEHOLDER"
-            className="inline-block bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-full hover:opacity-90 transition-opacity gold-glow"
+            className="inline-block btn-gradient text-foreground font-semibold px-6 py-3 rounded-xl blue-glow"
           >
             Download Now
           </a>
@@ -42,7 +42,7 @@ const Footer = () => (
           </p>
         </div>
       </div>
-      <div className="border-t border-border/50 pt-6 text-center text-xs text-muted-foreground">
+      <div className="border-t border-border/30 pt-6 text-center text-xs text-muted-foreground">
         <p>© 2026 1xbetapp.download — All rights reserved. This website provides informational content only.</p>
       </div>
     </div>

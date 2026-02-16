@@ -2,3 +2,10 @@ User-agent: *
 Allow: /
 
 Sitemap: https://1xbetapp.download/sitemap.xml
+
+# Allow all pages for indexing
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /

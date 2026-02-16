@@ -16,15 +16,20 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4 className="font-semibold text-foreground mb-4">Company</h4>
+          <h4 className="font-semibold text-foreground mb-4">Platform</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><Link to="/about" className="hover:text-primary transition-colors">About</Link></li>
-            <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+            <li><Link to="/sports-betting" className="hover:text-primary transition-colors">Sports Betting</Link></li>
+            <li><Link to="/casino" className="hover:text-primary transition-colors">Casino</Link></li>
+            <li><Link to="/live-casino" className="hover:text-primary transition-colors">Live Casino</Link></li>
+            <li><Link to="/slots-games" className="hover:text-primary transition-colors">Slots & Games</Link></li>
+            <li><Link to="/payments" className="hover:text-primary transition-colors">Payments</Link></li>
           </ul>
         </div>
         <div>
           <h4 className="font-semibold text-foreground mb-4">Legal</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
+            <li><Link to="/about" className="hover:text-primary transition-colors">About</Link></li>
+            <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             <li><Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
             <li><Link to="/terms" className="hover:text-primary transition-colors">Terms & Conditions</Link></li>
             <li><Link to="/disclaimer" className="hover:text-primary transition-colors">Disclaimer</Link></li>

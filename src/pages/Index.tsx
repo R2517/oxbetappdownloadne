@@ -7,6 +7,7 @@ import { Shield, Zap, RefreshCw, Smartphone, Star, Trophy, Gamepad2, CreditCard,
 import { motion } from "framer-motion";
 import { useGeo } from "@/contexts/GeoContext";
 import { getGeoContent, getPageHero, getGeoSchema, getRotatingHook, getGeoMeta, getOrganizationSchema, getWebSiteSchema } from "@/lib/geo-content";
+import { CenterBanner } from "@/components/AffiliateBanners";
 import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
 import casinoHero from "@/assets/casino-hero.jpg";
 
@@ -120,6 +121,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <CenterBanner />
 
       {/* App Overview */}
       <section className="section-padding">
@@ -288,6 +291,8 @@ const Index = () => {
         </div>
       </section>
 
+      <CenterBanner />
+
       {/* Installation Steps */}
       <section className="section-padding gradient-section">
         <div className="container-narrow">
@@ -346,6 +351,8 @@ const Index = () => {
           </StaggerContainer>
         </div>
       </section>
+
+      <CenterBanner />
 
       {/* FAQ Preview */}
       <section className="section-padding gradient-section">

@@ -6,6 +6,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useGeo } from "@/contexts/GeoContext";
 import { getPageHero, getGeoSchema } from "@/lib/geo-content";
+import { CenterBanner } from "@/components/AffiliateBanners";
 import slotsHero from "@/assets/slots-games-hero.jpg";
 
 const slotCategories = [
@@ -79,6 +80,8 @@ const SlotsGames = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <CenterBanner />
 
     {/* Hero Image */}
     <section className="section-padding">
@@ -226,6 +229,8 @@ const SlotsGames = () => {
         </StaggerContainer>
       </div>
     </section>
+
+    <CenterBanner />
 
     {/* FAQ */}
     <section className="section-padding">

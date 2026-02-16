@@ -6,6 +6,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useGeo } from "@/contexts/GeoContext";
 import { getPageHero, getGeoSchema } from "@/lib/geo-content";
+import { CenterBanner } from "@/components/AffiliateBanners";
 import sportsHero from "@/assets/sports-betting-page-hero.jpg";
 
 const sportsMarkets = [
@@ -77,6 +78,8 @@ const SportsBetting = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <CenterBanner />
 
     {/* Hero Image */}
     <section className="section-padding">
@@ -232,6 +235,8 @@ const SportsBetting = () => {
         </ScrollReveal>
       </div>
     </section>
+
+    <CenterBanner />
 
     {/* FAQ */}
     <section className="section-padding gradient-section">

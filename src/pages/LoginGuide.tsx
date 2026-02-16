@@ -5,6 +5,7 @@ import { ChevronRight, UserPlus, LogIn, Shield, KeyRound, AlertCircle, CheckCirc
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { useGeo } from "@/contexts/GeoContext";
 import { getPageHero } from "@/lib/geo-content";
+import { CenterBanner } from "@/components/AffiliateBanners";
 
 const LoginGuide = () => {
   const { country } = useGeo();
@@ -33,6 +34,8 @@ const LoginGuide = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <CenterBanner />
 
     {/* Registration */}
     <section className="section-padding">
@@ -106,6 +109,8 @@ const LoginGuide = () => {
         </ScrollReveal>
       </div>
     </section>
+
+    <CenterBanner />
 
     {/* Security */}
     <section className="section-padding">

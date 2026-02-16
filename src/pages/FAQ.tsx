@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { useGeo } from "@/contexts/GeoContext";
 import { getPageHero } from "@/lib/geo-content";
+import { CenterBanner } from "@/components/AffiliateBanners";
 
 const faqData = [
   { cat: "Download & Installation", items: [
@@ -72,6 +73,8 @@ const FAQ = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      <CenterBanner />
 
     <section className="section-padding pt-0">
       <div className="container-narrow max-w-3xl">

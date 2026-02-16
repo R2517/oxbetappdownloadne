@@ -5,6 +5,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/com
 import { Shield, Zap, RefreshCw, Smartphone, Star, Trophy, Gamepad2, CreditCard, Users, TrendingUp, Clock, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useGeo } from "@/contexts/GeoContext";
+import { getGeoContent } from "@/lib/geo-content";
 import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
 import casinoHero from "@/assets/casino-hero.jpg";
 
@@ -39,6 +40,7 @@ const faqPreview = [
 
 const Index = () => {
   const { country } = useGeo();
+  const geo = getGeoContent(country);
   return (
     <Layout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -74,18 +76,18 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <span className="gold-text">1xBet App Download</span>
-              <br />
-              <span className="text-foreground">Latest Version for Android & iOS</span>
-            </motion.h1>
-            <motion.p
-              className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Experience the fastest, most feature-rich mobile betting and casino platform. Download the 1xBet app today and enjoy sports betting, live casino, and thousands of games — all in one secure mobile application.
-            </motion.p>
+               <span className="gold-text">{geo.heroTitle}</span>
+               <br />
+               <span className="text-foreground">Latest Version for Android & iOS</span>
+             </motion.h1>
+             <motion.p
+               className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.6, delay: 0.2 }}
+             >
+               {geo.heroSubtitle}
+             </motion.p>
             <motion.div
               className="flex flex-wrap justify-center gap-4 mb-10"
               initial={{ opacity: 0, y: 20 }}
@@ -117,10 +119,10 @@ const Index = () => {
         <div className="container-narrow">
           <GlowOnScroll>
             <div className="glass-card p-8 md:p-12">
-              <h2 className="text-3xl font-bold mb-4 text-foreground">Complete Mobile Betting & Casino Platform</h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                The 1xBet mobile app brings the entire betting and casino experience to your fingertips. Whether you prefer pre-match sports wagering, live in-play betting, or spinning the latest casino slots, this app delivers everything in a seamless, fast-loading mobile interface. Available as an APK download for Android and through the App Store for iOS, the application is optimized for performance on all modern devices.
-              </p>
+               <h2 className="text-3xl font-bold mb-4 text-foreground">{geo.overviewTitle}</h2>
+               <p className="text-muted-foreground leading-relaxed mb-4">
+                 {geo.overviewP1}
+               </p>
               <p className="text-muted-foreground leading-relaxed">
                 With over 40 sports markets, 5,000+ casino games, live dealer tables, and exclusive 1xGames, the platform offers one of the most comprehensive mobile gaming experiences available. If you want to explore all the <Link to="/features" className="text-primary hover:underline">betting and casino features</Link> in detail, check our dedicated features page. Ready to get started? <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the latest version</a> and experience it yourself.
               </p>
@@ -164,10 +166,10 @@ const Index = () => {
         <div className="container-narrow">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
-              <h2 className="text-3xl font-bold mb-4 text-foreground">Sports Betting Excellence</h2>
-              <p className="text-muted-foreground mb-4">
-                From football and basketball to tennis, esports, and virtual sports — the sports betting app covers over 40 disciplines with thousands of daily markets. Enjoy competitive odds, live streaming, and a powerful cashout feature that puts you in control of your bets.
-              </p>
+               <h2 className="text-3xl font-bold mb-4 text-foreground">{geo.sportsTitle}</h2>
+               <p className="text-muted-foreground mb-4">
+                 {geo.sportsDesc}
+                </p>
               <ul className="space-y-2 text-sm text-muted-foreground mb-6">
                 <li className="flex items-center gap-2"><Clock size={14} className="text-primary" /> Live in-play betting with real-time updates</li>
                 <li className="flex items-center gap-2"><TrendingUp size={14} className="text-primary" /> Advanced statistics and analytics</li>
@@ -194,10 +196,10 @@ const Index = () => {
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right" className="order-1 md:order-2">
-              <h2 className="text-3xl font-bold mb-4 text-foreground">Casino & Live Dealers</h2>
-              <p className="text-muted-foreground mb-4">
-                Dive into a world-class <Link to="/features" className="text-primary hover:underline">casino experience</Link> with over 5,000 games from industry-leading providers. The live casino brings real dealers to your screen with HD streaming, interactive tables, and immersive gameplay. Play blackjack, roulette, baccarat, and hundreds of exclusive titles.
-              </p>
+               <h2 className="text-3xl font-bold mb-4 text-foreground">{geo.casinoTitle}</h2>
+               <p className="text-muted-foreground mb-4">
+                 {geo.casinoDesc} Play blackjack, roulette, baccarat, and hundreds of exclusive titles available through the <Link to="/casino" className="text-primary hover:underline">casino section</Link>.
+               </p>
               <p className="text-muted-foreground mb-6">
                 The casino app delivers smooth performance, fast loading times, and a curated selection of the most popular and high-RTP games available on mobile.
               </p>
@@ -340,10 +342,10 @@ const Index = () => {
         />
         <div className="container-narrow text-center relative">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Ready to Get Started?</h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Download the 1xBet mobile app now and enjoy the complete sports betting and casino experience on your device. Fast, secure, and always up to date.
-            </p>
+             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">{geo.ctaTitle}</h2>
+             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+               {geo.ctaDesc}
+             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <CTAButton text="Download Now" size="lg" />
               <CTAButton text="Learn More" variant="outline" size="lg" />

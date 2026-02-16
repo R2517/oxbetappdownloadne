@@ -8,8 +8,10 @@ import { motion } from "framer-motion";
 import { useGeo } from "@/contexts/GeoContext";
 import { getGeoContent, getPageHero, getGeoSchema, getRotatingHook, getGeoMeta, getOrganizationSchema, getWebSiteSchema } from "@/lib/geo-content";
 import { CenterBanner } from "@/components/AffiliateBanners";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
 import casinoHero from "@/assets/casino-hero.jpg";
+import heroBackground from "@/assets/sports-betting-page-hero.jpg";
 
 const trustBadges = [
   { icon: Shield, label: "Secure & Safe" },
@@ -70,9 +72,10 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/8 via-transparent to-transparent" />
+        <img src={heroBackground} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         <motion.div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-primary/10 blur-[120px]"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-primary/10 blur-[120px] will-change-transform"
           animate={{ scale: [1, 1.1, 1], opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -94,7 +97,7 @@ const Index = () => {
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.6, delay: 0.2 }}
              >
-               {geo.heroSubtitle}
+               {hero.desc}
              </motion.p>
             <motion.div
               className="flex flex-wrap justify-center gap-4 mb-10"
@@ -352,24 +355,22 @@ const Index = () => {
         </div>
       </section>
 
-      <CenterBanner />
-
       {/* FAQ Preview */}
       <section className="section-padding gradient-section">
         <div className="container-narrow max-w-3xl">
           <ScrollReveal>
             <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Frequently Asked Questions</h2>
           </ScrollReveal>
-          <StaggerContainer className="space-y-4">
-            {faqPreview.map((item) => (
-              <StaggerItem key={item.q}>
-                <div className="glass-card p-6">
-                  <h3 className="font-semibold mb-2 text-foreground">{item.q}</h3>
-                  <p className="text-sm text-muted-foreground">{item.a}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <ScrollReveal delay={0.1}>
+            <Accordion type="single" collapsible className="space-y-3">
+              {faqPreview.map((item, i) => (
+                <AccordionItem key={item.q} value={`faq-${i}`} className="glass-card border-none px-6">
+                  <AccordionTrigger className="text-foreground hover:no-underline">{item.q}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">{item.a}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <div className="text-center mt-8">
               <Link to="/faq" className="inline-flex items-center gap-1 text-primary hover:underline font-medium">
@@ -384,7 +385,7 @@ const Index = () => {
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/8 to-transparent" />
         <motion.div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-primary/8 blur-[100px]"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-primary/8 blur-[100px] will-change-transform"
           animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         />

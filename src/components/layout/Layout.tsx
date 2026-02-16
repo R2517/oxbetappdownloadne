@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import BackToTop from "@/components/BackToTop";
 import { SidebarBanner } from "@/components/AffiliateBanners";
 
 const Layout = ({ children }: { children: ReactNode }) => (
@@ -26,6 +27,7 @@ const Layout = ({ children }: { children: ReactNode }) => (
     </div>
     <Footer />
     <FloatingCTA />
+    <BackToTop />
   </div>
 );
 

@@ -1,9 +1,35 @@
 import { Link } from "react-router-dom";
+import { Download, Globe, Gamepad2, Headphones } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 
+const stats = [
+  { icon: Download, value: "10M+", label: "Downloads" },
+  { icon: Globe, value: "40+", label: "Sports" },
+  { icon: Gamepad2, value: "5,000+", label: "Games" },
+  { icon: Headphones, value: "24/7", label: "Support" },
+];
+
 const Footer = () => (
-  <footer className="border-t border-border/30" style={{ background: "#05070D" }}>
-    <div className="container-narrow px-4 py-12">
+  <footer className="relative" style={{ background: "#05070D" }}>
+    {/* Gradient top border */}
+    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+    {/* Social proof stats */}
+    <div className="container-narrow px-4 pt-10 pb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        {stats.map((s) => (
+          <div key={s.label} className="flex items-center gap-3 justify-center">
+            <s.icon size={20} className="text-primary" />
+            <div>
+              <p className="text-lg font-bold text-foreground">{s.value}</p>
+              <p className="text-xs text-muted-foreground">{s.label}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="container-narrow px-4 pb-12">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
         <div>
           <h4 className="font-semibold text-foreground mb-4">Main Pages</h4>

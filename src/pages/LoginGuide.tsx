@@ -71,7 +71,7 @@ const LoginGuide = () => {
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2"><LogIn className="text-primary" size={24} /> How to Log In</h2>
           <p className="text-muted-foreground mb-4">Logging into the app is simple. Open the application, enter your registered email or phone number along with your password, and tap 'Log In'. The app supports biometric authentication (fingerprint and Face ID) for faster access on supported devices.</p>
           <p className="text-muted-foreground mb-4">If you use one-click registration, your login credentials were generated automatically — check your email or the account details provided during registration. You can change your password at any time in the account settings.</p>
-          <p className="text-muted-foreground">Don't have the app yet? <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the latest version</a> to get started.</p>
+          <p className="text-muted-foreground">Don't have the app yet? <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">Download the latest version</a> to get started.</p>
         </ScrollReveal>
       </div>
     </section>

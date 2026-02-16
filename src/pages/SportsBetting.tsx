@@ -91,7 +91,7 @@ const SportsBetting = () => {
               Live in-play betting is a standout feature, with odds updating every second during matches. Combined with integrated live streaming for thousands of events, you can watch and bet simultaneously without leaving the app. The powerful cashout feature gives you complete control over your active bets.
             </p>
             <p className="text-muted-foreground mb-6">
-              <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the 1xBet mobile app</a> to access the full sports betting experience. For additional features like casino and live casino, visit our <Link to="/features" className="text-primary hover:underline">features overview</Link>.
+              <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">Download the 1xBet mobile app</a> to access the full sports betting experience. For additional features like casino and live casino, visit our <Link to="/features" className="text-primary hover:underline">features overview</Link>.
             </p>
             <CTAButton text="Download Betting App" />
           </ScrollReveal>

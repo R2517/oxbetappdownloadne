@@ -38,7 +38,9 @@ const Footer = () => (
         <div>
           <h4 className="font-semibold text-foreground mb-4">Get the App</h4>
           <a
-            href="#AFFILIATE_LINK_PLACEHOLDER"
+            href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97"
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
             className="inline-block btn-gradient text-foreground font-semibold px-6 py-3 rounded-xl blue-glow"
           >
             Download Now

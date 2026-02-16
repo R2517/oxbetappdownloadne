@@ -212,7 +212,7 @@ const Casino = () => {
           </StaggerContainer>
           <ScrollReveal delay={0.2}>
             <p className="text-muted-foreground">
-              Ready to explore the full casino? <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the 1xBet app</a> and start playing today. For more details on all platform features, visit our <Link to="/features" className="text-primary hover:underline">features page</Link>.
+              Ready to explore the full casino? <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">Download the 1xBet app</a> and start playing today. For more details on all platform features, visit our <Link to="/features" className="text-primary hover:underline">features page</Link>.
             </p>
           </ScrollReveal>
         </div>

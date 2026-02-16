@@ -34,7 +34,9 @@ const FloatingCTA = () => {
         >
           <div className="relative flex items-center gap-3 btn-gradient rounded-2xl px-4 py-3.5 blue-glow-strong shadow-2xl">
             <a
-              href="#AFFILIATE_LINK_PLACEHOLDER"
+              href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97"
+              target="_blank"
+              rel="nofollow sponsored noopener noreferrer"
               className="flex-1 text-center text-sm font-bold text-foreground"
             >
               {ctaText}

@@ -131,7 +131,7 @@ const Index = () => {
                  {geo.overviewP1}
                </p>
               <p className="text-muted-foreground leading-relaxed">
-                With over 40 sports markets, 5,000+ casino games, live dealer tables, and exclusive 1xGames, the platform offers one of the most comprehensive mobile gaming experiences available. If you want to explore all the <Link to="/features" className="text-primary hover:underline">betting and casino features</Link> in detail, check our dedicated features page. Ready to get started? <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the latest version</a> and experience it yourself.
+                With over 40 sports markets, 5,000+ casino games, live dealer tables, and exclusive 1xGames, the platform offers one of the most comprehensive mobile gaming experiences available. If you want to explore all the <Link to="/features" className="text-primary hover:underline">betting and casino features</Link> in detail, check our dedicated features page. Ready to get started? <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">Download the latest version</a> and experience it yourself.
               </p>
             </div>
           </GlowOnScroll>
@@ -294,7 +294,7 @@ const Index = () => {
           <ScrollReveal>
             <h2 className="text-3xl font-bold text-center mb-4 text-foreground">How to Download & Install</h2>
             <p className="text-center text-muted-foreground mb-12">
-              Get started in minutes. Follow these simple steps to <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">install the mobile app</a> on your device.
+              Get started in minutes. Follow these simple steps to <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="text-primary hover:underline">install the mobile app</a> on your device.
             </p>
           </ScrollReveal>
           <StaggerContainer className="grid md:grid-cols-4 gap-6" staggerDelay={0.15}>

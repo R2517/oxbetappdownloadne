@@ -81,10 +81,10 @@ const Index = () => {
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
         <div className="container-narrow relative">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="flex flex-col md:grid md:grid-cols-[1fr_280px] gap-8 md:gap-12 items-center">
             <div className="text-center md:text-left">
               <motion.h1
-                className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
@@ -125,15 +125,15 @@ const Index = () => {
               </motion.div>
             </div>
             <motion.div
-              className="hidden md:flex justify-center"
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
+              className="hidden md:flex justify-center items-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <img
                 src={phoneMockup}
                 alt="1xBet mobile app interface on smartphone"
-                className="w-64 lg:w-72 drop-shadow-[0_0_40px_rgba(30,136,229,0.3)]"
+                className="w-56 lg:w-64 drop-shadow-[0_0_40px_rgba(30,136,229,0.3)]"
                 loading="eager"
               />
             </motion.div>

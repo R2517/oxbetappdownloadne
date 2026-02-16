@@ -4,6 +4,8 @@ import CTAButton from "@/components/CTAButton";
 import { ChevronRight, CreditCard, Shield, Clock, Zap, AlertCircle, CheckCircle } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useGeo } from "@/contexts/GeoContext";
+import { getPageHero, getGeoSchema } from "@/lib/geo-content";
 import paymentsHero from "@/assets/payments-hero.jpg";
 
 const depositMethods = [
@@ -38,40 +40,44 @@ const paymentsFaq = [
   { q: "What should I do if a deposit fails?", a: "Check your payment method has sufficient funds, verify the details entered are correct, and ensure your bank hasn't blocked the transaction. Try an alternative payment method or contact support for assistance." },
 ];
 
-const Payments = () => (
-  <Layout>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-        { "@type": "ListItem", position: 2, name: "Payments", item: "https://1xbetapp.download/payments" },
-      ]
-    })}} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "FAQPage",
-      mainEntity: paymentsFaq.map(item => ({
-        "@type": "Question", name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a }
-      }))
-    })}} />
+const Payments = () => {
+  const { country } = useGeo();
+  const hero = getPageHero("payments", country);
 
-    {/* Hero */}
-    <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
-      <div className="container-narrow text-center">
-        <ScrollReveal>
-          <nav className="text-sm text-muted-foreground mb-6">
-            <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Payments</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gold-text">1xBet Payments</span> — Deposits & Withdrawals
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            Fast, secure payment methods for deposits and withdrawals. Over 50 options including credit cards, e-wallets, cryptocurrency, and mobile payments. Instant deposits and quick withdrawals with bank-grade security.
-          </p>
-          <CTAButton text="Get Started Now" size="lg" />
-        </ScrollReveal>
-      </div>
-    </section>
+  return (
+    <Layout>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
+          { "@type": "ListItem", position: 2, name: "Payments", item: "https://1xbetapp.download/payments" },
+        ]
+      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: paymentsFaq.map(item => ({
+          "@type": "Question", name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a }
+        }))
+      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGeoSchema(country))}} />
+
+      {/* Hero */}
+      <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
+        <div className="container-narrow text-center">
+          <ScrollReveal>
+            <nav className="text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Payments</span>
+            </nav>
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">
+              <span className="gold-text">{hero.h1}</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-semibold text-foreground mb-4">{hero.h1Line2}</p>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">{hero.desc}</p>
+            <CTAButton text="Get Started Now" size="lg" showBonus />
+          </ScrollReveal>
+        </div>
+      </section>
 
     {/* Hero Image */}
     <section className="section-padding">
@@ -255,19 +261,18 @@ const Payments = () => (
       </div>
     </section>
 
-    {/* Final CTA */}
-    <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
-      <GlowOnScroll>
-        <div className="container-narrow">
-          <h2 className="text-3xl font-bold mb-4">Deposit & Start Playing Today</h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Install the 1xBet app</a>, choose from 50+ payment methods, and start betting on <Link to="/sports-betting" className="text-primary hover:underline">sports</Link> or playing <Link to="/casino" className="text-primary hover:underline">casino games</Link> within minutes.
-          </p>
-          <CTAButton text="Download Now" size="lg" />
-        </div>
-      </GlowOnScroll>
-    </section>
-  </Layout>
-);
+      {/* Final CTA */}
+      <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
+        <GlowOnScroll>
+          <div className="container-narrow">
+            <h2 className="text-3xl font-bold mb-4">{hero.ctaTitle}</h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{hero.ctaDesc}</p>
+            <CTAButton text="Download Now" size="lg" showBonus />
+          </div>
+        </GlowOnScroll>
+      </section>
+    </Layout>
+  );
+};
 
 export default Payments;

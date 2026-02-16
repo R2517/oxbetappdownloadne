@@ -4,6 +4,8 @@ import CTAButton from "@/components/CTAButton";
 import { ChevronRight, Trophy, TrendingUp, Zap, Clock, Target, Shield, Star } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useGeo } from "@/contexts/GeoContext";
+import { getPageHero, getGeoSchema } from "@/lib/geo-content";
 import sportsHero from "@/assets/sports-betting-page-hero.jpg";
 
 const sportsMarkets = [
@@ -37,40 +39,44 @@ const sportsFaq = [
   { q: "Can I bet on esports?", a: "Absolutely. The esports section covers CS2, Dota 2, League of Legends, Valorant, and more with comprehensive markets. Live streaming of major esports events is available directly in the betting app." },
 ];
 
-const SportsBetting = () => (
-  <Layout>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-        { "@type": "ListItem", position: 2, name: "Sports Betting", item: "https://1xbetapp.download/sports-betting" },
-      ]
-    })}} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "FAQPage",
-      mainEntity: sportsFaq.map(item => ({
-        "@type": "Question", name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a }
-      }))
-    })}} />
+const SportsBetting = () => {
+  const { country } = useGeo();
+  const hero = getPageHero("sportsBetting", country);
 
-    {/* Hero */}
-    <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
-      <div className="container-narrow text-center">
-        <ScrollReveal>
-          <nav className="text-sm text-muted-foreground mb-6">
-            <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Sports Betting</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gold-text">1xBet Sports Betting</span> — 40+ Sports, Live Odds
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            Bet on football, cricket, tennis, basketball, esports, and 40+ sports with the best odds online. Live in-play betting, cashout, live streaming, and advanced statistics — all available in the 1xBet sports betting app.
-          </p>
-          <CTAButton text="Start Betting Now" size="lg" />
-        </ScrollReveal>
-      </div>
-    </section>
+  return (
+    <Layout>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
+          { "@type": "ListItem", position: 2, name: "Sports Betting", item: "https://1xbetapp.download/sports-betting" },
+        ]
+      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: sportsFaq.map(item => ({
+          "@type": "Question", name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a }
+        }))
+      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGeoSchema(country))}} />
+
+      {/* Hero */}
+      <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
+        <div className="container-narrow text-center">
+          <ScrollReveal>
+            <nav className="text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Sports Betting</span>
+            </nav>
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">
+              <span className="gold-text">{hero.h1}</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-semibold text-foreground mb-4">{hero.h1Line2}</p>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">{hero.desc}</p>
+            <CTAButton text="Start Betting Now" size="lg" showBonus />
+          </ScrollReveal>
+        </div>
+      </section>
 
     {/* Hero Image */}
     <section className="section-padding">
@@ -244,19 +250,18 @@ const SportsBetting = () => (
       </div>
     </section>
 
-    {/* Final CTA */}
-    <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
-      <GlowOnScroll>
-        <div className="container-narrow">
-          <h2 className="text-3xl font-bold mb-4">Start Betting on Sports Today</h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the 1xBet sports betting app</a> and access 40+ sports, live streaming, cashout, and the best odds on mobile. Also explore <Link to="/casino" className="text-primary hover:underline">casino games</Link> and <Link to="/payments" className="text-primary hover:underline">payment options</Link>.
-          </p>
-          <CTAButton text="Download Now" size="lg" />
-        </div>
-      </GlowOnScroll>
-    </section>
-  </Layout>
-);
+      {/* Final CTA */}
+      <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
+        <GlowOnScroll>
+          <div className="container-narrow">
+            <h2 className="text-3xl font-bold mb-4">{hero.ctaTitle}</h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{hero.ctaDesc}</p>
+            <CTAButton text="Download Now" size="lg" showBonus />
+          </div>
+        </GlowOnScroll>
+      </section>
+    </Layout>
+  );
+};
 
 export default SportsBetting;

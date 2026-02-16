@@ -3,33 +3,39 @@ import Layout from "@/components/layout/Layout";
 import CTAButton from "@/components/CTAButton";
 import { ChevronRight, Trophy, Gamepad2, Users, Star, CreditCard, Zap, TrendingUp, Shield, Smartphone, Clock, Target, Dice1 } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
+import { useGeo } from "@/contexts/GeoContext";
+import { getPageHero, getGeoSchema } from "@/lib/geo-content";
 
-const Features = () => (
-  <Layout>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-        { "@type": "ListItem", position: 2, name: "Features", item: "https://1xbetapp.download/features" },
-      ]
-    })}} />
+const Features = () => {
+  const { country } = useGeo();
+  const hero = getPageHero("features", country);
 
-    <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
-      <div className="container-narrow text-center">
-        <ScrollReveal>
-          <nav className="text-sm text-muted-foreground mb-6">
-            <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Features</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gold-text">Betting & Casino Features</span>
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            A comprehensive guide to all sports betting, casino, live dealer, and gaming features available in the 1xBet mobile application. Explore every aspect of the platform.
-          </p>
-          <CTAButton text="Download App" />
-        </ScrollReveal>
-      </div>
-    </section>
+  return (
+    <Layout>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
+          { "@type": "ListItem", position: 2, name: "Features", item: "https://1xbetapp.download/features" },
+        ]
+      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGeoSchema(country))}} />
+
+      <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
+        <div className="container-narrow text-center">
+          <ScrollReveal>
+            <nav className="text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Features</span>
+            </nav>
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">
+              <span className="gold-text">{hero.h1}</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-semibold text-foreground mb-4">{hero.h1Line2}</p>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">{hero.desc}</p>
+            <CTAButton text="Download App" showBonus />
+          </ScrollReveal>
+        </div>
+      </section>
 
     {/* Sports Betting */}
     <section className="section-padding">
@@ -189,19 +195,18 @@ const Features = () => (
       </div>
     </section>
 
-    {/* Final CTA */}
-    <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
-      <GlowOnScroll>
-        <div className="container-narrow">
-          <h2 className="text-3xl font-bold mb-4">Experience All Features Today</h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Install the 1xBet mobile app</a> and access the complete range of sports betting, casino, live casino, and gaming features on your device.
-          </p>
-          <CTAButton text="Download Now" size="lg" />
-        </div>
-      </GlowOnScroll>
-    </section>
-  </Layout>
-);
+      {/* Final CTA */}
+      <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
+        <GlowOnScroll>
+          <div className="container-narrow">
+            <h2 className="text-3xl font-bold mb-4">{hero.ctaTitle}</h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{hero.ctaDesc}</p>
+            <CTAButton text="Download Now" size="lg" showBonus />
+          </div>
+        </GlowOnScroll>
+      </section>
+    </Layout>
+  );
+};
 
 export default Features;

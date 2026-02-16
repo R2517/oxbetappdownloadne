@@ -4,6 +4,8 @@ import CTAButton from "@/components/CTAButton";
 import { ChevronRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
+import { useGeo } from "@/contexts/GeoContext";
+import { getPageHero } from "@/lib/geo-content";
 
 const faqData = [
   { cat: "Download & Installation", items: [
@@ -44,29 +46,32 @@ const faqData = [
   ]},
 ];
 
-const FAQ = () => (
-  <Layout>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "FAQPage",
-      mainEntity: faqData.flatMap(cat => cat.items.map(item => ({
-        "@type": "Question", name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a }
-      })))
-    })}} />
+const FAQ = () => {
+  const { country } = useGeo();
+  const hero = getPageHero("faq", country);
 
-    <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
-      <div className="container-narrow text-center">
-        <ScrollReveal>
-          <nav className="text-sm text-muted-foreground mb-6">
-            <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">FAQ</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4"><span className="gold-text">Frequently Asked Questions</span></h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            Find answers to the most common questions about the 1xBet mobile app — download, installation, login, payments, features, and more.
-          </p>
-        </ScrollReveal>
-      </div>
-    </section>
+  return (
+    <Layout>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: faqData.flatMap(cat => cat.items.map(item => ({
+          "@type": "Question", name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a }
+        })))
+      })}} />
+
+      <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
+        <div className="container-narrow text-center">
+          <ScrollReveal>
+            <nav className="text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">FAQ</span>
+            </nav>
+            <h1 className="text-4xl md:text-5xl font-bold mb-2"><span className="gold-text">{hero.h1}</span></h1>
+            <p className="text-xl md:text-2xl font-semibold text-foreground mb-4">{hero.h1Line2}</p>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">{hero.desc}</p>
+          </ScrollReveal>
+        </div>
+      </section>
 
     <section className="section-padding pt-0">
       <div className="container-narrow max-w-3xl">
@@ -88,18 +93,17 @@ const FAQ = () => (
       </div>
     </section>
 
-    <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
-      <GlowOnScroll>
-        <div className="container-narrow">
-          <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
-          <p className="text-muted-foreground mb-8">
-            <Link to="/contact" className="text-primary hover:underline">Contact our support team</Link> or <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">download the app</a> and use the built-in help center.
-          </p>
-          <CTAButton text="Download App" size="lg" />
-        </div>
-      </GlowOnScroll>
-    </section>
-  </Layout>
-);
+      <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
+        <GlowOnScroll>
+          <div className="container-narrow">
+            <h2 className="text-3xl font-bold mb-4">{hero.ctaTitle}</h2>
+            <p className="text-muted-foreground mb-8">{hero.ctaDesc}</p>
+            <CTAButton text="Download App" size="lg" showBonus />
+          </div>
+        </GlowOnScroll>
+      </section>
+    </Layout>
+  );
+};
 
 export default FAQ;

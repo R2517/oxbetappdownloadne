@@ -5,7 +5,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/com
 import { Shield, Zap, RefreshCw, Smartphone, Star, Trophy, Gamepad2, CreditCard, Users, TrendingUp, Clock, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useGeo } from "@/contexts/GeoContext";
-import { getGeoContent } from "@/lib/geo-content";
+import { getGeoContent, getPageHero, getGeoSchema, getRotatingHook } from "@/lib/geo-content";
 import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
 import casinoHero from "@/assets/casino-hero.jpg";
 
@@ -41,6 +41,8 @@ const faqPreview = [
 const Index = () => {
   const { country } = useGeo();
   const geo = getGeoContent(country);
+  const hero = getPageHero("home", country);
+  const hook = getRotatingHook(country);
   return (
     <Layout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -50,15 +52,7 @@ const Index = () => {
         url: "https://1xbetapp.download",
         description: "Official informational resource for the 1xBet mobile application."
       })}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        name: "1xBet Mobile App",
-        operatingSystem: "Android, iOS",
-        applicationCategory: "GameApplication",
-        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-        aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", ratingCount: "15420" }
-      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGeoSchema(country))}} />
 
       {/* Hero Section */}
       <section className="section-padding relative overflow-hidden">
@@ -76,9 +70,9 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
             >
-               <span className="gold-text">{geo.heroTitle}</span>
+               <span className="gold-text">{hero.h1}</span>
                <br />
-               <span className="text-foreground">Latest Version for Android & iOS</span>
+               <span className="text-foreground text-2xl md:text-3xl">{hero.h1Line2}</span>
              </motion.h1>
              <motion.p
                className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"

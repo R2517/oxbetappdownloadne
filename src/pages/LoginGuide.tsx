@@ -3,31 +3,36 @@ import Layout from "@/components/layout/Layout";
 import CTAButton from "@/components/CTAButton";
 import { ChevronRight, UserPlus, LogIn, Shield, KeyRound, AlertCircle, CheckCircle } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
+import { useGeo } from "@/contexts/GeoContext";
+import { getPageHero } from "@/lib/geo-content";
 
-const LoginGuide = () => (
-  <Layout>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-        { "@type": "ListItem", position: 2, name: "Login Guide", item: "https://1xbetapp.download/login-guide" },
-      ]
-    })}} />
+const LoginGuide = () => {
+  const { country } = useGeo();
+  const hero = getPageHero("loginGuide", country);
 
-    <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
-      <div className="container-narrow text-center">
-        <ScrollReveal>
-          <nav className="text-sm text-muted-foreground mb-6">
-            <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Login Guide</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4"><span className="gold-text">Login & Account Guide</span></h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            Complete guide to creating your account, logging in, account verification, password recovery, and keeping your account secure on the 1xBet mobile app.
-          </p>
-          <CTAButton text="Download App" />
-        </ScrollReveal>
-      </div>
-    </section>
+  return (
+    <Layout>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
+          { "@type": "ListItem", position: 2, name: "Login Guide", item: "https://1xbetapp.download/login-guide" },
+        ]
+      })}} />
+
+      <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
+        <div className="container-narrow text-center">
+          <ScrollReveal>
+            <nav className="text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Login Guide</span>
+            </nav>
+            <h1 className="text-4xl md:text-5xl font-bold mb-2"><span className="gold-text">{hero.h1}</span></h1>
+            <p className="text-xl md:text-2xl font-semibold text-foreground mb-4">{hero.h1Line2}</p>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">{hero.desc}</p>
+            <CTAButton text="Download App" showBonus />
+          </ScrollReveal>
+        </div>
+      </section>
 
     {/* Registration */}
     <section className="section-padding">
@@ -164,18 +169,17 @@ const LoginGuide = () => (
     </section>
 
     {/* Final CTA */}
-    <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
-      <GlowOnScroll>
-        <div className="container-narrow">
-          <h2 className="text-3xl font-bold mb-4">Get the App & Create Your Account</h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Download the 1xBet app</a>, register in seconds, and start exploring sports betting, casino, and more.
-          </p>
-          <CTAButton text="Download Now" size="lg" />
-        </div>
-      </GlowOnScroll>
-    </section>
-  </Layout>
-);
+      <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
+        <GlowOnScroll>
+          <div className="container-narrow">
+            <h2 className="text-3xl font-bold mb-4">{hero.ctaTitle}</h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{hero.ctaDesc}</p>
+            <CTAButton text="Download Now" size="lg" showBonus />
+          </div>
+        </GlowOnScroll>
+      </section>
+    </Layout>
+  );
+};
 
 export default LoginGuide;

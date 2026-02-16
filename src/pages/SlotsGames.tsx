@@ -4,6 +4,8 @@ import CTAButton from "@/components/CTAButton";
 import { ChevronRight, Gamepad2, Zap, Star, TrendingUp, Sparkles, Target } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useGeo } from "@/contexts/GeoContext";
+import { getPageHero, getGeoSchema } from "@/lib/geo-content";
 import slotsHero from "@/assets/slots-games-hero.jpg";
 
 const slotCategories = [
@@ -39,40 +41,44 @@ const slotsFaq = [
   { q: "What are multiplier trails?", a: "Multiplier trails are progressive multipliers that increase with consecutive wins or during bonus rounds. They can dramatically boost payouts. Games like Gates of Olympus and Sweet Bonanza feature this mechanic." },
 ];
 
-const SlotsGames = () => (
-  <Layout>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-        { "@type": "ListItem", position: 2, name: "Slots & Games", item: "https://1xbetapp.download/slots-games" },
-      ]
-    })}} />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-      "@context": "https://schema.org", "@type": "FAQPage",
-      mainEntity: slotsFaq.map(item => ({
-        "@type": "Question", name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a }
-      }))
-    })}} />
+const SlotsGames = () => {
+  const { country } = useGeo();
+  const hero = getPageHero("slotsGames", country);
 
-    {/* Hero */}
-    <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
-      <div className="container-narrow text-center">
-        <ScrollReveal>
-          <nav className="text-sm text-muted-foreground mb-6">
-            <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Slots & Games</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gold-text">1xBet Slots & Games</span> — Crash, Instant & More
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-            Discover thousands of slot games, crash games like Aviator, instant wins, and exclusive 1xGames. From Megaways to Plinko, from classic fruit machines to cutting-edge multiplier games — find your perfect game on the 1xBet mobile app.
-          </p>
-          <CTAButton text="Play Games Now" size="lg" />
-        </ScrollReveal>
-      </div>
-    </section>
+  return (
+    <Layout>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
+          { "@type": "ListItem", position: 2, name: "Slots & Games", item: "https://1xbetapp.download/slots-games" },
+        ]
+      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        mainEntity: slotsFaq.map(item => ({
+          "@type": "Question", name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a }
+        }))
+      })}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGeoSchema(country))}} />
+
+      {/* Hero */}
+      <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
+        <div className="container-narrow text-center">
+          <ScrollReveal>
+            <nav className="text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">Slots & Games</span>
+            </nav>
+            <h1 className="text-4xl md:text-5xl font-bold mb-2">
+              <span className="gold-text">{hero.h1}</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-semibold text-foreground mb-4">{hero.h1Line2}</p>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">{hero.desc}</p>
+            <CTAButton text="Play Games Now" size="lg" showBonus />
+          </ScrollReveal>
+        </div>
+      </section>
 
     {/* Hero Image */}
     <section className="section-padding">
@@ -238,19 +244,18 @@ const SlotsGames = () => (
       </div>
     </section>
 
-    {/* Final CTA */}
-    <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
-      <GlowOnScroll>
-        <div className="container-narrow">
-          <h2 className="text-3xl font-bold mb-4">Start Playing Your Favorite Games</h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">Install the 1xBet app</a> and explore thousands of slots, crash games, and instant wins on your mobile device. Check out <Link to="/live-casino" className="text-primary hover:underline">live casino</Link> or <Link to="/payments" className="text-primary hover:underline">payment methods</Link>.
-          </p>
-          <CTAButton text="Download App" size="lg" />
-        </div>
-      </GlowOnScroll>
-    </section>
-  </Layout>
-);
+      {/* Final CTA */}
+      <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
+        <GlowOnScroll>
+          <div className="container-narrow">
+            <h2 className="text-3xl font-bold mb-4">{hero.ctaTitle}</h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{hero.ctaDesc}</p>
+            <CTAButton text="Download App" size="lg" showBonus />
+          </div>
+        </GlowOnScroll>
+      </section>
+    </Layout>
+  );
+};
 
 export default SlotsGames;

@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import CTAButton from "@/components/CTAButton";
 import { ChevronRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 
 const faqData = [
   { cat: "Download & Installation", items: [
@@ -55,42 +56,48 @@ const FAQ = () => (
 
     <section className="section-padding bg-gradient-to-b from-primary/5 to-transparent">
       <div className="container-narrow text-center">
-        <nav className="text-sm text-muted-foreground mb-6">
-          <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">FAQ</span>
-        </nav>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4"><span className="gold-text">Frequently Asked Questions</span></h1>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
-          Find answers to the most common questions about the 1xBet mobile app — download, installation, login, payments, features, and more.
-        </p>
+        <ScrollReveal>
+          <nav className="text-sm text-muted-foreground mb-6">
+            <Link to="/" className="hover:text-primary">Home</Link> <ChevronRight size={12} className="inline mx-1" /> <span className="text-foreground">FAQ</span>
+          </nav>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4"><span className="gold-text">Frequently Asked Questions</span></h1>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
+            Find answers to the most common questions about the 1xBet mobile app — download, installation, login, payments, features, and more.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
 
     <section className="section-padding pt-0">
       <div className="container-narrow max-w-3xl">
-        {faqData.map((cat) => (
-          <div key={cat.cat} className="mb-10">
-            <h2 className="text-2xl font-bold mb-4">{cat.cat}</h2>
-            <Accordion type="multiple" className="space-y-2">
-              {cat.items.map((item, i) => (
-                <AccordionItem key={i} value={`${cat.cat}-${i}`} className="glass-card px-5 border-none">
-                  <AccordionTrigger className="text-left font-medium hover:text-primary py-4">{item.q}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4">{item.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+        {faqData.map((cat, catIdx) => (
+          <ScrollReveal key={cat.cat} delay={catIdx * 0.05}>
+            <div className="mb-10">
+              <h2 className="text-2xl font-bold mb-4">{cat.cat}</h2>
+              <Accordion type="multiple" className="space-y-2">
+                {cat.items.map((item, i) => (
+                  <AccordionItem key={i} value={`${cat.cat}-${i}`} className="glass-card px-5 border-none">
+                    <AccordionTrigger className="text-left font-medium hover:text-primary py-4">{item.q}</AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground pb-4">{item.a}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </ScrollReveal>
         ))}
       </div>
     </section>
 
     <section className="section-padding bg-gradient-to-b from-primary/10 to-transparent text-center">
-      <div className="container-narrow">
-        <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
-        <p className="text-muted-foreground mb-8">
-          <Link to="/contact" className="text-primary hover:underline">Contact our support team</Link> or <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">download the app</a> and use the built-in help center.
-        </p>
-        <CTAButton text="Download App" size="lg" />
-      </div>
+      <GlowOnScroll>
+        <div className="container-narrow">
+          <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
+          <p className="text-muted-foreground mb-8">
+            <Link to="/contact" className="text-primary hover:underline">Contact our support team</Link> or <a href="#AFFILIATE_LINK_PLACEHOLDER" className="text-primary hover:underline">download the app</a> and use the built-in help center.
+          </p>
+          <CTAButton text="Download App" size="lg" />
+        </div>
+      </GlowOnScroll>
     </section>
   </Layout>
 );

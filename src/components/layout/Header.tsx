@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import logoIcon from "@/assets/logo-icon.png";
+import CountrySwitcher from "@/components/CountrySwitcher";
+import { useGeo } from "@/contexts/GeoContext";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -19,6 +21,7 @@ const navLinks = [
 const Header = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { country } = useGeo();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/30 bg-background/70 backdrop-blur-xl">
@@ -50,8 +53,9 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <a href="#AFFILIATE_LINK_PLACEHOLDER" className="btn-gradient px-5 py-2.5 rounded-xl text-sm font-semibold text-foreground blue-glow hidden sm:inline-flex">
+        <div className="flex items-center gap-2">
+          <CountrySwitcher />
+          <a href="#AFFILIATE_LINK_PLACEHOLDER" className="btn-gradient px-4 py-2.5 rounded-xl text-sm font-semibold text-foreground blue-glow hidden sm:inline-flex whitespace-nowrap">
             Download Now
           </a>
           <button

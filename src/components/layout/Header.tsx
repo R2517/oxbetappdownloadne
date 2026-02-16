@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logoFull from "@/assets/logo-full.png";
+import logoIcon from "@/assets/logo-icon.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -16,17 +18,22 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/30 bg-background/70 backdrop-blur-xl">
-      <div className="container-narrow flex h-16 items-center justify-between px-4">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg btn-gradient flex items-center justify-center font-bold text-foreground text-sm">
-            1x
-          </div>
-          <span className="font-bold text-lg text-foreground hidden sm:inline">
-            1xBet<span className="text-primary">App</span>
-          </span>
+      <div className="container-narrow flex h-[72px] md:h-[76px] items-center justify-between px-4">
+        <Link to="/" className="flex items-center gap-1 hover:brightness-110 transition-all shrink-0">
+          {/* Full logo on desktop, icon on mobile */}
+          <img
+            src={logoFull}
+            alt="1xBetApp.Download Logo"
+            className="hidden sm:block h-10 md:h-12 w-auto object-contain"
+          />
+          <img
+            src={logoIcon}
+            alt="1xBet App"
+            className="sm:hidden h-8 w-auto object-contain"
+          />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-6 ml-8">
           {navLinks.map((link) => (
             <Link
               key={link.to}

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoFull from "@/assets/logo-full.png";
 
 const Footer = () => (
   <footer className="border-t border-border/30" style={{ background: "#05070D" }}>
@@ -42,8 +43,9 @@ const Footer = () => (
           </p>
         </div>
       </div>
-      <div className="border-t border-border/30 pt-6 text-center text-xs text-muted-foreground">
-        <p>© 2026 1xbetapp.download — All rights reserved. This website provides informational content only.</p>
+      <div className="border-t border-border/30 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <img src={logoFull} alt="1xBetApp.Download" className="h-8 w-auto object-contain opacity-90" />
+        <p className="text-xs text-muted-foreground text-center">© 2026 1xbetapp.download — All rights reserved. This website provides informational content only.</p>
       </div>
     </div>
   </footer>

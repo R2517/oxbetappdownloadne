@@ -4,6 +4,8 @@ import CTAButton from "@/components/CTAButton";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { Shield, Zap, RefreshCw, Smartphone, Star, Trophy, Gamepad2, CreditCard, Users, TrendingUp, Clock, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
+import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
+import casinoHero from "@/assets/casino-hero.jpg";
 
 const trustBadges = [
   { icon: Shield, label: "Secure & Safe" },
@@ -173,7 +175,7 @@ const Index = () => {
             </ScrollReveal>
             <ScrollReveal direction="right">
               <div className="glass-card aspect-video flex items-center justify-center overflow-hidden">
-                <img src="/placeholder.svg" alt="1xBet sports betting interface on mobile device" className="w-full h-full object-cover rounded-xl opacity-40" loading="lazy" />
+                <img src={sportsBettingHero} alt="1xBet sports betting interface on mobile device" className="w-full h-full object-cover rounded-xl" loading="lazy" />
               </div>
             </ScrollReveal>
           </div>
@@ -186,7 +188,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left" className="order-2 md:order-1">
               <div className="glass-card aspect-video flex items-center justify-center overflow-hidden">
-                <img src="/placeholder.svg" alt="Casino app interface showing slot games" className="w-full h-full object-cover rounded-xl opacity-40" loading="lazy" />
+                <img src={casinoHero} alt="Casino app interface showing slot games" className="w-full h-full object-cover rounded-xl" loading="lazy" />
               </div>
             </ScrollReveal>
             <ScrollReveal direction="right" className="order-1 md:order-2">

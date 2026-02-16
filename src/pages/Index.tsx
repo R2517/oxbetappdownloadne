@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import CTAButton from "@/components/CTAButton";
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
-import { Shield, Zap, RefreshCw, Smartphone, Star, Trophy, Gamepad2, CreditCard, Users, TrendingUp, Clock, ChevronRight } from "lucide-react";
+import { Shield, Zap, RefreshCw, Smartphone, Star, Trophy, Gamepad2, CreditCard, Users, TrendingUp, Clock, ChevronRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useGeo } from "@/contexts/GeoContext";
-import { getGeoContent, getPageHero, getGeoSchema, getRotatingHook } from "@/lib/geo-content";
+import { getGeoContent, getPageHero, getGeoSchema, getRotatingHook, getGeoMeta, getOrganizationSchema, getWebSiteSchema } from "@/lib/geo-content";
 import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
 import casinoHero from "@/assets/casino-hero.jpg";
 
@@ -43,16 +44,28 @@ const Index = () => {
   const geo = getGeoContent(country);
   const hero = getPageHero("home", country);
   const hook = getRotatingHook(country);
+  const meta = getGeoMeta(country);
+
+  // Dynamic meta tags
+  useEffect(() => {
+    document.title = meta.title;
+    const descTag = document.querySelector('meta[name="description"]');
+    if (descTag) descTag.setAttribute("content", meta.description);
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", meta.title);
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", meta.description);
+    const twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twTitle) twTitle.setAttribute("content", meta.title);
+    const twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute("content", meta.description);
+  }, [meta]);
+
   return (
     <Layout>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "1xBet App Download",
-        url: "https://1xbetapp.download",
-        description: "Official informational resource for the 1xBet mobile application."
-      })}} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGeoSchema(country))}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationSchema()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getWebSiteSchema()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGeoSchema(country)) }} />
 
       {/* Hero Section */}
       <section className="section-padding relative overflow-hidden">
@@ -88,8 +101,8 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <CTAButton text="Download Now" size="lg" showBonus />
-              <CTAButton text="Explore Features" variant="outline" size="lg" />
+              <CTAButton text="Download App Now" size="lg" showBonus />
+              <CTAButton text="Get Bonus & Start Playing" variant="outline" size="lg" />
             </motion.div>
             <motion.div
               className="flex flex-wrap justify-center gap-6"
@@ -169,7 +182,7 @@ const Index = () => {
                 <li className="flex items-center gap-2"><TrendingUp size={14} className="text-primary" /> Advanced statistics and analytics</li>
                 <li className="flex items-center gap-2"><CreditCard size={14} className="text-primary" /> Full cashout and partial cashout options</li>
               </ul>
-              <CTAButton text="Get the App" />
+              <CTAButton text="Install & Start Playing" />
             </ScrollReveal>
             <ScrollReveal direction="right">
               <div className="glass-card aspect-video flex items-center justify-center overflow-hidden">
@@ -197,38 +210,70 @@ const Index = () => {
               <p className="text-muted-foreground mb-6">
                 The casino app delivers smooth performance, fast loading times, and a curated selection of the most popular and high-RTP games available on mobile.
               </p>
-              <CTAButton text="Install App" />
+              <CTAButton text="Play Instantly" />
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Bonuses */}
+      {/* Bonuses — Enhanced Long-Form Section */}
       <section className="section-padding">
-        <div className="container-narrow text-center">
+        <div className="container-narrow">
           <ScrollReveal>
-            <h2 className="text-3xl font-bold mb-4 text-foreground">Bonuses & Promotions</h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              New users can enjoy generous welcome offers, while existing players benefit from ongoing promotions, cashback rewards, and loyalty programs. The mobile app provides exclusive promotions not available on desktop.
-            </p>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-2 text-foreground">{geo.bonusTitle}</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{geo.bonusDesc}</p>
+            </div>
           </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="glass-card p-8 md:p-10 mb-8">
+              <p className="text-muted-foreground leading-relaxed mb-6">{geo.bonusLongContent}</p>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="font-semibold text-foreground mb-3">Key Benefits</h3>
+                  <ul className="space-y-2">
+                    {geo.bonusBenefits.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-3">Bonus Highlights</h3>
+                  <ul className="space-y-2">
+                    {geo.bonusHighlights.map((h) => (
+                      <li key={h} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Star size={16} className="text-primary shrink-0 mt-0.5" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+
           <StaggerContainer className="grid md:grid-cols-3 gap-6 mb-8">
             <StaggerItem>
-              <div className="glass-card p-6 h-full">
+              <div className="glass-card p-6 h-full text-center">
                 <Star className="text-primary mx-auto mb-3" size={28} />
                 <h3 className="font-semibold mb-2 text-foreground">Welcome Bonus</h3>
                 <p className="text-sm text-muted-foreground">Generous first deposit bonus for new users signing up through the mobile app.</p>
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="glass-card p-6 h-full">
+              <div className="glass-card p-6 h-full text-center">
                 <Trophy className="text-primary mx-auto mb-3" size={28} />
                 <h3 className="font-semibold mb-2 text-foreground">Loyalty Rewards</h3>
                 <p className="text-sm text-muted-foreground">Earn points with every bet and redeem them for bonuses, free bets, and more.</p>
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="glass-card p-6 h-full">
+              <div className="glass-card p-6 h-full text-center">
                 <RefreshCw className="text-primary mx-auto mb-3" size={28} />
                 <h3 className="font-semibold mb-2 text-foreground">Daily Promotions</h3>
                 <p className="text-sm text-muted-foreground">Regular daily and weekly offers keep the experience fresh and rewarding.</p>
@@ -236,7 +281,9 @@ const Index = () => {
             </StaggerItem>
           </StaggerContainer>
           <ScrollReveal delay={0.2}>
-            <CTAButton text="Get Latest Version" />
+            <div className="text-center">
+              <CTAButton text="Download App & Claim Bonus" size="lg" showBonus />
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -341,8 +388,8 @@ const Index = () => {
                {geo.ctaDesc}
              </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <CTAButton text="Download Now" size="lg" />
-              <CTAButton text="Learn More" variant="outline" size="lg" />
+              <CTAButton text="Download App Now" size="lg" showBonus />
+              <CTAButton text="Start Winning Today" variant="outline" size="lg" />
             </div>
           </ScrollReveal>
         </div>

@@ -12,7 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
 import casinoHero from "@/assets/casino-hero.jpg";
 import heroBackground from "@/assets/sports-betting-page-hero.jpg";
-import phoneMockup from "@/assets/phone-mockup.png";
+
 
 const trustBadges = [
   { icon: Shield, label: "Secure & Safe" },
@@ -81,8 +81,8 @@ const Index = () => {
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
         <div className="container-narrow relative">
-          <div className="flex flex-col md:grid md:grid-cols-[1fr_280px] gap-8 md:gap-12 items-center">
-            <div className="text-center md:text-left">
+          <div className="flex flex-col items-center">
+            <div className="text-center">
               <motion.h1
                 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight"
                 initial={{ opacity: 0, y: 30 }}
@@ -102,7 +102,7 @@ const Index = () => {
                 {hero.desc}
               </motion.p>
               <motion.div
-                className="flex flex-wrap justify-center md:justify-start gap-4 mb-10"
+                className="flex flex-wrap justify-center gap-4 mb-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -111,7 +111,7 @@ const Index = () => {
                 <CTAButton text="Get Bonus & Start Playing" variant="outline" size="lg" />
               </motion.div>
               <motion.div
-                className="flex flex-wrap justify-center md:justify-start gap-6"
+                className="flex flex-wrap justify-center gap-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
@@ -124,19 +124,6 @@ const Index = () => {
                 ))}
               </motion.div>
             </div>
-            <motion.div
-              className="hidden md:flex justify-center items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <img
-                src={phoneMockup}
-                alt="1xBet mobile app interface on smartphone"
-                className="w-56 lg:w-64 drop-shadow-[0_20px_60px_rgba(30,136,229,0.4)] filter brightness-110"
-                loading="eager"
-              />
-            </motion.div>
           </div>
         </div>
       </section>

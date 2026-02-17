@@ -133,7 +133,7 @@ const Index = () => {
               <img
                 src={phoneMockup}
                 alt="1xBet mobile app interface on smartphone"
-                className="w-56 lg:w-64 drop-shadow-[0_0_40px_rgba(30,136,229,0.3)]"
+                className="w-56 lg:w-64 drop-shadow-[0_20px_60px_rgba(30,136,229,0.4)] filter brightness-110"
                 loading="eager"
               />
             </motion.div>

@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { GeoProvider } from "@/contexts/GeoContext";
 import { ThemeProvider } from "next-themes";
+import CountryRoute from "@/components/CountryRoute";
+import SeoHead from "@/components/SeoHead";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +28,24 @@ const Payments = lazy(() => import("./pages/Payments"));
 
 const queryClient = new QueryClient();
 
+const pageRoutes = [
+  { path: "", element: <Index /> },
+  { path: "download", element: <Download /> },
+  { path: "features", element: <Features /> },
+  { path: "sports-betting", element: <SportsBetting /> },
+  { path: "casino", element: <Casino /> },
+  { path: "live-casino", element: <LiveCasino /> },
+  { path: "slots-games", element: <SlotsGames /> },
+  { path: "payments", element: <Payments /> },
+  { path: "login-guide", element: <LoginGuide /> },
+  { path: "faq", element: <FAQ /> },
+  { path: "about", element: <About /> },
+  { path: "contact", element: <Contact /> },
+  { path: "privacy", element: <Privacy /> },
+  { path: "terms", element: <Terms /> },
+  { path: "disclaimer", element: <Disclaimer /> },
+];
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
@@ -36,21 +56,24 @@ const App = () => (
           <BrowserRouter>
             <Suspense fallback={<div className="min-h-screen bg-background" />}>
               <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/download" element={<Download />} />
-                <Route path="/features" element={<Features />} />
-                <Route path="/sports-betting" element={<SportsBetting />} />
-                <Route path="/casino" element={<Casino />} />
-                <Route path="/live-casino" element={<LiveCasino />} />
-                <Route path="/slots-games" element={<SlotsGames />} />
-                <Route path="/payments" element={<Payments />} />
-                <Route path="/login-guide" element={<LoginGuide />} />
-                <Route path="/faq" element={<FAQ />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/disclaimer" element={<Disclaimer />} />
+                {/* Base routes (IP-detected) */}
+                {pageRoutes.map((r) => (
+                  <Route
+                    key={r.path || "/"}
+                    path={r.path === "" ? "/" : `/${r.path}`}
+                    element={<><SeoHead />{r.element}</>}
+                  />
+                ))}
+
+                {/* Country-prefixed routes */}
+                {pageRoutes.map((r) => (
+                  <Route
+                    key={`country-${r.path || "index"}`}
+                    path={`/:countryCode${r.path ? `/${r.path}` : ""}`}
+                    element={<CountryRoute>{r.element}</CountryRoute>}
+                  />
+                ))}
+
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

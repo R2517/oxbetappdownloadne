@@ -10,7 +10,7 @@ const stats = [
 ];
 
 const Footer = () => (
-  <footer className="relative" style={{ background: "#05070D" }}>
+  <footer className="relative bg-card border-t border-border/30">
     {/* Gradient top border */}
     <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 

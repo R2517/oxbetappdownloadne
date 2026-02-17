@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 220 40% 5%;
-    --foreground: 0 0% 100%;
+    --background: 210 20% 98%;
+    --foreground: 220 40% 10%;
 
-    --card: 220 30% 8%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 10%;
 
-    --popover: 220 30% 8%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 10%;
 
     --primary: 210 78% 51%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 85% 34%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 215 85% 94%;
+    --secondary-foreground: 215 85% 34%;
 
-    --muted: 220 25% 12%;
-    --muted-foreground: 200 18% 72%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 10% 40%;
 
-    --accent: 195 100% 50%;
-    --accent-foreground: 220 40% 5%;
+    --accent: 195 100% 94%;
+    --accent-foreground: 210 78% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 50% 20%;
-    --input: 220 25% 14%;
-    --ring: 195 100% 50%;
+    --border: 210 20% 88%;
+    --input: 210 20% 92%;
+    --ring: 210 78% 51%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 220 40% 5%;
-    --sidebar-foreground: 0 0% 100%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 40% 10%;
     --sidebar-primary: 210 78% 51%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 25% 12%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 210 50% 20%;
-    --sidebar-ring: 195 100% 50%;
+    --sidebar-accent: 210 20% 94%;
+    --sidebar-accent-foreground: 220 40% 10%;
+    --sidebar-border: 210 20% 88%;
+    --sidebar-ring: 210 78% 51%;
   }
 
   .dark {
@@ -83,6 +83,9 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  .dark body {
     background: radial-gradient(ellipse at top, hsl(220 40% 7%), hsl(220 50% 3%));
     background-attachment: fixed;
   }
@@ -100,6 +103,18 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 0.875rem;
     transition: all 0.3s ease;
+  }
+
+  :root .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .dark .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
   }
 
   .glass-card:hover {

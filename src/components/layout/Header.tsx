@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import logoIcon from "@/assets/logo-icon.png";
@@ -11,23 +11,24 @@ import { countries } from "@/lib/geo-data";
 const validCodes = new Set(countries.map((c) => c.code.toLowerCase()));
 
 function usePrefix(): string {
-  const { countryCode } = useParams<{ countryCode: string }>();
-  if (countryCode && validCodes.has(countryCode.toLowerCase())) {
-    return `/${countryCode.toLowerCase()}`;
+  const { pathname } = useLocation();
+  const first = pathname.split("/").filter(Boolean)[0];
+  if (first && validCodes.has(first.toLowerCase())) {
+    return `/${first.toLowerCase()}`;
   }
   return "";
 }
 
 const navLinks = [
-  { to: "/", label: "Home", path: "" },
-  { to: "/download", label: "Download", path: "download" },
-  { to: "/sports-betting", label: "Sports", path: "sports-betting" },
-  { to: "/casino", label: "Casino", path: "casino" },
-  { to: "/live-casino", label: "Live Casino", path: "live-casino" },
-  { to: "/slots-games", label: "Games", path: "slots-games" },
-  { to: "/payments", label: "Payments", path: "payments" },
-  { to: "/login-guide", label: "Login", path: "login-guide" },
-  { to: "/faq", label: "FAQ", path: "faq" },
+  { label: "Home", path: "" },
+  { label: "Download", path: "download" },
+  { label: "Sports", path: "sports-betting" },
+  { label: "Casino", path: "casino" },
+  { label: "Live Casino", path: "live-casino" },
+  { label: "Games", path: "slots-games" },
+  { label: "Payments", path: "payments" },
+  { label: "Login", path: "login-guide" },
+  { label: "FAQ", path: "faq" },
 ];
 
 const Header = () => {
@@ -36,7 +37,7 @@ const Header = () => {
   const { country } = useGeo();
   const prefix = usePrefix();
 
-  const linkTo = (path: string) => path === "" ? `${prefix || "/"}` : `${prefix}/${path}`;
+  const linkTo = (path: string) => path === "" ? (prefix || "/") : `${prefix}/${path}`;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/30 backdrop-blur-xl">
@@ -47,17 +48,21 @@ const Header = () => {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-5 ml-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={linkTo(link.path)}
-              className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
-                location.pathname === linkTo(link.path) ? "text-primary" : "text-muted-foreground"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const to = linkTo(link.path);
+            const isActive = location.pathname === to || (to !== "/" && location.pathname === to + "/");
+            return (
+              <Link
+                key={link.path || "home"}
+                to={to}
+                className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
+                  isActive ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -75,18 +80,22 @@ const Header = () => {
       {open && (
         <nav className="lg:hidden border-t border-border/30 bg-background/95 backdrop-blur-xl">
           <div className="container-narrow flex flex-col gap-2 py-4 px-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={linkTo(link.path)}
-                onClick={() => setOpen(false)}
-                className={`text-sm font-medium py-2 transition-colors hover:text-primary ${
-                  location.pathname === linkTo(link.path) ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const to = linkTo(link.path);
+              const isActive = location.pathname === to || (to !== "/" && location.pathname === to + "/");
+              return (
+                <Link
+                  key={link.path || "home"}
+                  to={to}
+                  onClick={() => setOpen(false)}
+                  className={`text-sm font-medium py-2 transition-colors hover:text-primary ${
+                    isActive ? "text-primary" : "text-muted-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
         </nav>
       )}

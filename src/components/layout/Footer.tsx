@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Download, Globe, Gamepad2, Headphones } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import { countries } from "@/lib/geo-data";
@@ -6,9 +6,10 @@ import { countries } from "@/lib/geo-data";
 const validCodes = new Set(countries.map((c) => c.code.toLowerCase()));
 
 function usePrefix(): string {
-  const { countryCode } = useParams<{ countryCode: string }>();
-  if (countryCode && validCodes.has(countryCode.toLowerCase())) {
-    return `/${countryCode.toLowerCase()}`;
+  const { pathname } = useLocation();
+  const first = pathname.split("/").filter(Boolean)[0];
+  if (first && validCodes.has(first.toLowerCase())) {
+    return `/${first.toLowerCase()}`;
   }
   return "";
 }
@@ -22,7 +23,7 @@ const stats = [
 
 const Footer = () => {
   const prefix = usePrefix();
-  const linkTo = (path: string) => path === "" ? `${prefix || "/"}` : `${prefix}/${path}`;
+  const linkTo = (path: string) => path === "" ? (prefix || "/") : `${prefix}/${path}`;
 
   return (
     <footer className="relative bg-card border-t border-border/30">

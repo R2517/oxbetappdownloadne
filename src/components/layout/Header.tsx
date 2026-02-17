@@ -1,52 +1,58 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import logoIcon from "@/assets/logo-icon.png";
 import CountrySwitcher from "@/components/CountrySwitcher";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useGeo } from "@/contexts/GeoContext";
+import { countries } from "@/lib/geo-data";
+
+const validCodes = new Set(countries.map((c) => c.code.toLowerCase()));
+
+function usePrefix(): string {
+  const { countryCode } = useParams<{ countryCode: string }>();
+  if (countryCode && validCodes.has(countryCode.toLowerCase())) {
+    return `/${countryCode.toLowerCase()}`;
+  }
+  return "";
+}
 
 const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/download", label: "Download" },
-  { to: "/sports-betting", label: "Sports" },
-  { to: "/casino", label: "Casino" },
-  { to: "/live-casino", label: "Live Casino" },
-  { to: "/slots-games", label: "Games" },
-  { to: "/payments", label: "Payments" },
-  { to: "/login-guide", label: "Login" },
-  { to: "/faq", label: "FAQ" },
+  { to: "/", label: "Home", path: "" },
+  { to: "/download", label: "Download", path: "download" },
+  { to: "/sports-betting", label: "Sports", path: "sports-betting" },
+  { to: "/casino", label: "Casino", path: "casino" },
+  { to: "/live-casino", label: "Live Casino", path: "live-casino" },
+  { to: "/slots-games", label: "Games", path: "slots-games" },
+  { to: "/payments", label: "Payments", path: "payments" },
+  { to: "/login-guide", label: "Login", path: "login-guide" },
+  { to: "/faq", label: "FAQ", path: "faq" },
 ];
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const { country } = useGeo();
+  const prefix = usePrefix();
+
+  const linkTo = (path: string) => path === "" ? `${prefix || "/"}` : `${prefix}/${path}`;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/30 backdrop-blur-xl">
       <div className="container-narrow flex h-[72px] md:h-[76px] items-center justify-between px-4">
-        <Link to="/" className="flex items-center gap-1 hover:brightness-110 transition-all shrink-0">
-          <img
-            src={logoFull}
-            alt="1xBetApp.Download Logo"
-            className="hidden sm:block h-10 md:h-12 w-auto object-contain"
-          />
-          <img
-            src={logoIcon}
-            alt="1xBet App"
-            className="sm:hidden h-8 w-auto object-contain"
-          />
+        <Link to={prefix || "/"} className="flex items-center gap-1 hover:brightness-110 transition-all shrink-0">
+          <img src={logoFull} alt="1xBetApp.Download Logo" className="hidden sm:block h-10 md:h-12 w-auto object-contain" />
+          <img src={logoIcon} alt="1xBet App" className="sm:hidden h-8 w-auto object-contain" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-5 ml-8">
           {navLinks.map((link) => (
             <Link
-              key={link.to}
-              to={link.to}
+              key={link.path}
+              to={linkTo(link.path)}
               className={`text-sm font-medium transition-colors hover:text-primary whitespace-nowrap ${
-                location.pathname === link.to ? "text-primary" : "text-muted-foreground"
+                location.pathname === linkTo(link.path) ? "text-primary" : "text-muted-foreground"
               }`}
             >
               {link.label}
@@ -60,11 +66,7 @@ const Header = () => {
           <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="btn-gradient px-4 py-2.5 rounded-xl text-sm font-semibold text-foreground blue-glow hidden sm:inline-flex whitespace-nowrap">
             Download Now
           </a>
-          <button
-            className="lg:hidden text-foreground"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
+          <button className="lg:hidden text-foreground" onClick={() => setOpen(!open)} aria-label="Toggle menu">
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -75,11 +77,11 @@ const Header = () => {
           <div className="container-narrow flex flex-col gap-2 py-4 px-4">
             {navLinks.map((link) => (
               <Link
-                key={link.to}
-                to={link.to}
+                key={link.path}
+                to={linkTo(link.path)}
                 onClick={() => setOpen(false)}
                 className={`text-sm font-medium py-2 transition-colors hover:text-primary ${
-                  location.pathname === link.to ? "text-primary" : "text-muted-foreground"
+                  location.pathname === linkTo(link.path) ? "text-primary" : "text-muted-foreground"
                 }`}
               >
                 {link.label}

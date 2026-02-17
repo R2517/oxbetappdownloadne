@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import logoFull from "@/assets/logo-full.png";
 import logoIcon from "@/assets/logo-icon.png";
 import CountrySwitcher from "@/components/CountrySwitcher";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useGeo } from "@/contexts/GeoContext";
 
 const navLinks = [
@@ -54,6 +55,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <CountrySwitcher />
           <a href="https://reffpa.com/L?tag=d_5260822m_97c_&site=5260822&ad=97" target="_blank" rel="nofollow sponsored noopener noreferrer" className="btn-gradient px-4 py-2.5 rounded-xl text-sm font-semibold text-foreground blue-glow hidden sm:inline-flex whitespace-nowrap">
             Download Now

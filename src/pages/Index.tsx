@@ -11,7 +11,7 @@ import { CenterBanner } from "@/components/AffiliateBanners";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import sportsBettingHero from "@/assets/sports-betting-hero.jpg";
 import casinoHero from "@/assets/casino-hero.jpg";
-
+import HeroParticles from "@/components/HeroParticles";
 
 
 const trustBadges = [
@@ -73,34 +73,35 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="section-padding relative overflow-hidden min-h-[80vh] flex items-center">
-        {/* Animated gradient background */}
+        {/* Animated gradient background — blue/cyan brand palette */}
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background" />
         <motion.div
           className="absolute inset-0 opacity-30"
           style={{
-            background: "radial-gradient(ellipse at 20% 50%, hsl(210 78% 51% / 0.3), transparent 50%), radial-gradient(ellipse at 80% 20%, hsl(195 100% 50% / 0.25), transparent 50%), radial-gradient(ellipse at 50% 80%, hsl(185 100% 50% / 0.2), transparent 50%)",
+            background: "radial-gradient(ellipse at 20% 40%, hsl(210 80% 50% / 0.35), transparent 45%), radial-gradient(ellipse at 75% 25%, hsl(195 100% 50% / 0.3), transparent 45%), radial-gradient(ellipse at 50% 85%, hsl(210 90% 45% / 0.2), transparent 50%)",
           }}
-          animate={{
-            opacity: [0.2, 0.4, 0.2],
-          }}
+          animate={{ opacity: [0.25, 0.45, 0.25] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Floating orbs — faster, blue-cyan */}
+        <motion.div
+          className="absolute top-[10%] left-[15%] w-[300px] h-[300px] rounded-full bg-primary/20 blur-[100px] will-change-transform"
+          animate={{ x: [0, 50, -30, 0], y: [0, -40, 25, 0], scale: [1, 1.25, 0.85, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        {/* Floating orbs */}
         <motion.div
-          className="absolute top-[10%] left-[15%] w-[300px] h-[300px] rounded-full bg-primary/15 blur-[100px] will-change-transform"
-          animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.2, 0.9, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] rounded-full bg-accent/10 blur-[120px] will-change-transform"
-          animate={{ x: [0, -50, 30, 0], y: [0, 40, -20, 0], scale: [1, 0.85, 1.15, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-[40%] right-[30%] w-[200px] h-[200px] rounded-full bg-ring/10 blur-[80px] will-change-transform"
-          animate={{ x: [0, 30, -40, 0], y: [0, -50, 10, 0], opacity: [0.5, 1, 0.5] }}
+          className="absolute bottom-[10%] right-[10%] w-[350px] h-[350px] rounded-full blur-[120px] will-change-transform"
+          style={{ background: "hsl(195 100% 50% / 0.12)" }}
+          animate={{ x: [0, -60, 40, 0], y: [0, 50, -25, 0], scale: [1, 0.8, 1.2, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
+        <motion.div
+          className="absolute top-[35%] right-[25%] w-[220px] h-[220px] rounded-full bg-ring/12 blur-[90px] will-change-transform"
+          animate={{ x: [0, 35, -45, 0], y: [0, -55, 15, 0], opacity: [0.4, 0.9, 0.4] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Particles */}
+        <HeroParticles />
         {/* Subtle grid pattern */}
         <div
           className="absolute inset-0 opacity-[0.03]"

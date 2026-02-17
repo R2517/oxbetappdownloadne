@@ -25,7 +25,7 @@ const Header = () => {
   const { country } = useGeo();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/30 bg-background/70 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-border/30 backdrop-blur-xl">
       <div className="container-narrow flex h-[72px] md:h-[76px] items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-1 hover:brightness-110 transition-all shrink-0">
           <img

@@ -1,6 +1,28 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # --- Prerender.io for SEO bot crawling ---
+  # Replace YOUR_PRERENDER_TOKEN with your actual Prerender.io token
+  
+  <IfModule mod_headers.c>
+    RequestHeader set X-Prerender-Token "YOUR_PRERENDER_TOKEN"
+  </IfModule>
+
+  # Check if the request is from a bot/crawler
+  RewriteCond %{HTTP_USER_AGENT} googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest\/0\.|pinterestbot|slackbot|vkShare|W3C_Validator|whatsapp|flipboard|tumblr|bitlybot|skypeuripreview|nuzzel|discordbot|google\ page\ speed|qwantify|duckduckbot|semrushbot|ahrefsbot|mj12bot|dotbot [NC,OR]
+  RewriteCond %{QUERY_STRING} _escaped_fragment_
+
+  # Don't prerender if already prerendered
+  RewriteCond %{HTTP:X-Prerender} !1
+
+  # Don't prerender static files
+  RewriteCond %{REQUEST_URI} !\.(js|css|xml|less|png|jpg|jpeg|gif|pdf|txt|ico|rss|zip|mp3|rar|exe|wmv|doc|avi|ppt|mpg|mpeg|tif|wav|mov|psd|ai|xls|mp4|m4a|swf|dat|dmg|iso|flv|m4v|torrent|ttf|woff|woff2|svg|eot)$ [NC]
+
+  # Proxy the request to Prerender.io
+  RewriteRule ^(.*) https://service.prerender.io/https://1xbetapp.one/$1 [P,L]
+
+  # --- Standard SPA routing ---
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

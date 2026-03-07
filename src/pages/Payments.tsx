@@ -50,8 +50,8 @@ const Payments = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-          { "@type": "ListItem", position: 2, name: "Payments", item: "https://1xbetapp.download/payments" },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.one" },
+          { "@type": "ListItem", position: 2, name: "Payments", item: "https://1xbetapp.one/payments" },
         ]
       })}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({

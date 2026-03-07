@@ -91,8 +91,8 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-border/30 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <img src={logoFull} alt="1xBetApp.Download" className="h-8 w-auto object-contain opacity-90" />
-          <p className="text-xs text-muted-foreground text-center">© 2026 1xbetapp.download — All rights reserved. This website provides informational content only.</p>
+          <img src={logoFull} alt="1xBetApp.One" className="h-8 w-auto object-contain opacity-90" />
+          <p className="text-xs text-muted-foreground text-center">© 2026 1xbetapp.one — All rights reserved. This website provides informational content only.</p>
         </div>
       </div>
     </footer>

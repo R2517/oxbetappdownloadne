@@ -16,8 +16,8 @@ const Features = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-          { "@type": "ListItem", position: 2, name: "Features", item: "https://1xbetapp.download/features" },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.one" },
+          { "@type": "ListItem", position: 2, name: "Features", item: "https://1xbetapp.one/features" },
         ]
       })}} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getGeoSchema(country))}} />

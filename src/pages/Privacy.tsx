@@ -7,8 +7,8 @@ const Privacy = () => (
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
       "@context": "https://schema.org", "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-        { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://1xbetapp.download/privacy" },
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.one" },
+        { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://1xbetapp.one/privacy" },
       ]
     })}} />
 
@@ -24,7 +24,7 @@ const Privacy = () => (
       <div className="container-narrow max-w-3xl">
         <p className="text-muted-foreground mb-6">Last updated: January 2026</p>
 
-        <p className="text-muted-foreground mb-6">This Privacy Policy describes how 1xbetapp.download ("we", "our", "us") collects, uses, and protects your personal information when you visit our website. We are committed to safeguarding your privacy and ensuring transparency in how we handle your data.</p>
+        <p className="text-muted-foreground mb-6">This Privacy Policy describes how 1xbetapp.one ("we", "our", "us") collects, uses, and protects your personal information when you visit our website. We are committed to safeguarding your privacy and ensuring transparency in how we handle your data.</p>
 
         <h2 className="text-xl font-bold mt-8 mb-3">1. Information We Collect</h2>
         <p className="text-muted-foreground mb-3">We may collect the following types of information:</p>

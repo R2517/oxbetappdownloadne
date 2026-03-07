@@ -49,10 +49,8 @@ const SeoHead = () => {
     setMeta("name", "twitter:description", meta.description);
 
     // hreflang - update dynamically
-    // Remove old hreflangs
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
 
-    // Determine current page path (without country prefix)
     const pathParts = location.pathname.split("/").filter(Boolean);
     const validCodes = new Set(countries.map((c) => c.code.toLowerCase()));
     let pagePath = "";
@@ -63,7 +61,6 @@ const SeoHead = () => {
     }
     if (pagePath === "/") pagePath = "";
 
-    // x-default
     const addHreflang = (lang: string, href: string) => {
       const l = document.createElement("link");
       l.setAttribute("rel", "alternate");
@@ -79,6 +76,88 @@ const SeoHead = () => {
         : c.languageCode;
       addHreflang(langTag, `${BASE}/${c.code.toLowerCase()}${pagePath || "/"}`);
     });
+
+    // ─── JSON-LD Structured Data ───────────────────────────────
+    const jsonLdId = "seohead-jsonld";
+    let scriptEl = document.getElementById(jsonLdId) as HTMLScriptElement | null;
+    if (!scriptEl) {
+      scriptEl = document.createElement("script");
+      scriptEl.id = jsonLdId;
+      scriptEl.type = "application/ld+json";
+      document.head.appendChild(scriptEl);
+    }
+
+    // Build breadcrumb from path
+    const breadcrumbItems: { name: string; url: string }[] = [
+      { name: "Home", url: `${BASE}/` },
+    ];
+
+    const pageLabels: Record<string, string> = {
+      download: "Download",
+      features: "Features",
+      "sports-betting": "Sports Betting",
+      casino: "Casino",
+      "live-casino": "Live Casino",
+      "slots-games": "Slots Games",
+      payments: "Payments",
+      "login-guide": "Login Guide",
+      faq: "FAQ",
+      about: "About",
+      contact: "Contact",
+      privacy: "Privacy Policy",
+      terms: "Terms & Conditions",
+      disclaimer: "Disclaimer",
+    };
+
+    // Determine clean segments (skip country code)
+    const segments = pathParts.filter(
+      (s) => !validCodes.has(s.toLowerCase())
+    );
+
+    if (segments.length > 0) {
+      let cumulativePath = "";
+      for (const seg of segments) {
+        cumulativePath += `/${seg}`;
+        breadcrumbItems.push({
+          name: pageLabels[seg] || seg.charAt(0).toUpperCase() + seg.slice(1).replace(/-/g, " "),
+          url: `${BASE}${cumulativePath}`,
+        });
+      }
+    }
+
+    const jsonLd = [
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "1xBet App Download",
+        url: BASE,
+        logo: `${BASE}/favicon.png`,
+        sameAs: [],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "1xBet App Download",
+        url: BASE,
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${BASE}/?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumbItems.map((item, idx) => ({
+          "@type": "ListItem",
+          position: idx + 1,
+          name: item.name,
+          item: item.url,
+        })),
+      },
+    ];
+
+    scriptEl.textContent = JSON.stringify(jsonLd);
   }, [country, location.pathname]);
 
   return null;

@@ -124,7 +124,7 @@ const Index = () => {
                 <span className="text-foreground text-2xl md:text-3xl">{hero.h1Line2}</span>
               </motion.h1>
               <motion.p
-                className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl py-[5px] text-center font-extralight"
+                className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl text-center font-extralight py-[8px] px-[11px] mx-[240px]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}>

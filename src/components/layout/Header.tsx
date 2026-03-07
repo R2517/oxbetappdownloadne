@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoFull from "@/assets/logo-full.png";
+import logoFull from "@/assets/logo-full.svg";
 import logoIcon from "@/assets/logo-icon.png";
 import CountrySwitcher from "@/components/CountrySwitcher";
 import ThemeToggle from "@/components/ThemeToggle";

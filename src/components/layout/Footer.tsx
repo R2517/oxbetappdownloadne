@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Download, Globe, Gamepad2, Headphones } from "lucide-react";
-import logoFull from "@/assets/logo-full.png";
+import logoFull from "@/assets/logo-full.svg";
 import { countries } from "@/lib/geo-data";
 
 const validCodes = new Set(countries.map((c) => c.code.toLowerCase()));

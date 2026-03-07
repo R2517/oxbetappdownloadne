@@ -6,7 +6,7 @@
   # Replace YOUR_PRERENDER_TOKEN with your actual Prerender.io token
   
   <IfModule mod_headers.c>
-    RequestHeader set X-Prerender-Token "YOUR_PRERENDER_TOKEN"
+    RequestHeader set X-Prerender-Token "UngFUUE0KwA2SeO1gG0t"
   </IfModule>
 
   # Check if the request is from a bot/crawler

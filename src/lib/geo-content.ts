@@ -474,8 +474,8 @@ export function getOrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "1xBet App Download",
-    url: "https://1xbetapp.download",
-    logo: "https://1xbetapp.download/favicon.png",
+    url: "https://1xbetapp.one",
+    logo: "https://1xbetapp.one/favicon.png",
     description: "Official informational resource for the 1xBet mobile application.",
   };
 }
@@ -485,10 +485,10 @@ export function getWebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "1xBet App Download",
-    url: "https://1xbetapp.download",
+    url: "https://1xbetapp.one",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://1xbetapp.download/?s={search_term}",
+      target: "https://1xbetapp.one/?s={search_term}",
       "query-input": "required name=search_term",
     },
   };

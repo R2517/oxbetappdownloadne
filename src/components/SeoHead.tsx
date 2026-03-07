@@ -4,7 +4,7 @@ import { useGeo } from "@/contexts/GeoContext";
 import { getGeoMeta } from "@/lib/geo-content";
 import { countries } from "@/lib/geo-data";
 
-const BASE = "https://1xbetapp.download";
+const BASE = "https://1xbetapp.one";
 
 const SeoHead = () => {
   const { country } = useGeo();

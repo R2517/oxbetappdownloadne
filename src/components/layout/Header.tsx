@@ -43,7 +43,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border/30 backdrop-blur-xl">
       <div className="container-narrow flex h-[72px] md:h-[76px] items-center justify-between px-4">
         <Link to={prefix || "/"} className="flex items-center gap-1 hover:brightness-110 transition-all shrink-0">
-          <img src={logoFull} alt="1xBetApp.Download Logo" className="hidden sm:block h-10 md:h-12 w-auto object-contain" />
+          <img src={logoFull} alt="1xBetApp.One Logo" className="hidden sm:block h-10 md:h-12 w-auto object-contain" />
           <img src={logoIcon} alt="1xBet App" className="sm:hidden h-8 w-auto object-contain" />
         </Link>
 

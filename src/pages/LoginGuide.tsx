@@ -16,8 +16,8 @@ const LoginGuide = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org", "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.download" },
-          { "@type": "ListItem", position: 2, name: "Login Guide", item: "https://1xbetapp.download/login-guide" },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://1xbetapp.one" },
+          { "@type": "ListItem", position: 2, name: "Login Guide", item: "https://1xbetapp.one/login-guide" },
         ]
       })}} />
 

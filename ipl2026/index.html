@@ -11,6 +11,7 @@
     <meta property="og:description" content="Download 1xBet IPL 2026 app. Get exclusive ₹50,000 bonus on first deposit.">
     <meta property="og:type" content="website">
 
+    <!-- 1xBet Brand Colors: Blue #1E88E5 + Yellow #FFC107 -->
     <style>
         * {
             margin: 0;
@@ -19,19 +20,20 @@
         }
 
         :root {
-            --primary: #ff6b35;
-            --primary-dark: #e55a2b;
-            --secondary: #f7c531;
-            --dark-bg: #0a0a0f;
-            --card-bg: #14141f;
+            --1xbet-blue: #1E88E5;
+            --1xbet-yellow: #FFC107;
+            --1xbet-dark: #0D1B2A;
+            --1xbet-card: #152238;
+            --1xbet-lighter: #1E3A5F;
             --text-light: #ffffff;
             --text-muted: #a0a0a0;
-            --gradient: linear-gradient(135deg, #ff6b35 0%, #f7c531 100%);
+            --success: #4CAF50;
+            --live-red: #ff4757;
         }
 
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--dark-bg);
+            background: var(--1xbet-dark);
             color: var(--text-light);
             line-height: 1.6;
             min-height: 100vh;
@@ -39,9 +41,9 @@
 
         /* Header */
         header {
-            background: rgba(10, 10, 15, 0.95);
+            background: rgba(13, 27, 42, 0.95);
             backdrop-filter: blur(10px);
-            padding: 15px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -58,41 +60,90 @@
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 28px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
+        .logo-blue { color: var(--1xbet-blue); }
+        .logo-yellow { color: var(--1xbet-yellow); }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--1xbet-yellow); }
+
         .download-btn {
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--1xbet-blue), #42A5F5);
             color: white;
             padding: 10px 25px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .download-btn:hover {
             transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(30, 136, 229, 0.4);
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
             padding: 80px 20px;
-            background: radial-gradient(circle at center, rgba(255,107,53,0.15) 0%, transparent 70%);
+            background: radial-gradient(ellipse at top center, rgba(30, 136, 229, 0.2) 0%, transparent 60%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 193, 7, 0.03) 20px,
+                rgba(255, 193, 7, 0.03) 40px
+            );
+            animation: shimmer 20s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: clamp(32px, 6vw, 56px);
+            font-size: clamp(36px, 7vw, 64px);
             margin-bottom: 15px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: 900;
         }
+
+        .hero h1 .blue { color: var(--1xbet-blue); }
+        .hero h1 .yellow { color: var(--1xbet-yellow); }
 
         .hero .subtitle {
             font-size: 20px;
@@ -102,22 +153,27 @@
 
         .bonus-badge {
             display: inline-block;
-            background: var(--card-bg);
-            border: 2px solid var(--primary);
-            padding: 15px 40px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, var(--1xbet-card), var(--1xbet-lighter));
+            border: 2px solid var(--1xbet-yellow);
+            padding: 20px 50px;
+            border-radius: 20px;
             margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.2);
         }
 
         .bonus-badge .label {
             font-size: 14px;
             color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .bonus-badge .amount {
-            font-size: 36px;
-            font-weight: bold;
-            color: var(--secondary);
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--1xbet-yellow), #FFD54F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .cta-buttons {
@@ -125,10 +181,11 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 30px;
         }
 
         .btn {
-            padding: 15px 40px;
+            padding: 16px 45px;
             border-radius: 30px;
             font-size: 18px;
             font-weight: bold;
@@ -140,51 +197,68 @@
         }
 
         .btn-primary {
-            background: var(--gradient);
+            background: linear-gradient(135deg, var(--1xbet-blue), #42A5F5);
             color: white;
-            box-shadow: 0 5px 25px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 5px 25px rgba(30, 136, 229, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 35px rgba(255, 107, 53, 0.5);
+            box-shadow: 0 10px 35px rgba(30, 136, 229, 0.5);
         }
 
         .btn-secondary {
             background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid var(--1xbet-yellow);
+            color: var(--1xbet-yellow);
         }
 
         .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
+            background: var(--1xbet-yellow);
+            color: var(--1xbet-dark);
         }
 
         /* Promo Code Section */
-        .promo-code-section {
-            background: var(--card-bg);
-            padding: 20px;
-            text-align: center;
-            margin: 30px 20px;
+        .promo-code-box {
+            background: var(--1xbet-card);
+            padding: 20px 40px;
             border-radius: 15px;
-            border: 1px dashed var(--primary);
+            display: inline-block;
+            border: 1px dashed var(--1xbet-blue);
         }
 
-        .promo-code-section h3 {
+        .promo-code-box h3 {
+            font-size: 12px;
             color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
         }
 
         .promo-code {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--secondary);
-            letter-spacing: 3px;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, var(--1xbet-yellow), #FFD54F);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Promotions Grid */
+        /* Live Match Banner */
+        .live-banner {
+            background: linear-gradient(90deg, var(--live-red), #ff6b81);
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Section Styles */
         .section {
             max-width: 1200px;
             margin: 0 auto;
@@ -195,8 +269,340 @@
             text-align: center;
             font-size: 32px;
             margin-bottom: 40px;
+            font-weight: 700;
         }
 
+        .section-title .blue { color: var(--1xbet-blue); }
+        .section-title .yellow { color: var(--1xbet-yellow); }
+
+        /* Schedule */
+        .schedule-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .match-card {
+            background: var(--1xbet-card);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 4px solid var(--1xbet-blue);
+            transition: transform 0.3s;
+        }
+
+        .match-card:hover {
+            transform: translateX(5px);
+            border-left-color: var(--1xbet-yellow);
+        }
+
+        .match-date {
+            background: var(--1xbet-lighter);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .match-date .day { color: var(--1xbet-yellow); font-size: 18px; }
+        .match-date .month { font-size: 12px; color: var(--text-muted); }
+
+        .match-teams {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .team {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .team-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--1xbet-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .vs {
+            color: var(--1xbet-yellow);
+            font-weight: 900;
+            font-size: 14px;
+        }
+
+        .match-time {
+            background: linear-gradient(135deg, var(--1xbet-blue), #42A5F5);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Live Matches */
+        .live-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .live-card {
+            background: var(--1xbet-card);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,71,87,0.3);
+        }
+
+        .live-card-header {
+            background: linear-gradient(90deg, var(--live-red), #ff6b81);
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .live-card-body {
+            padding: 20px;
+        }
+
+        .live-teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .live-team {
+            text-align: center;
+        }
+
+        .live-team-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--1xbet-lighter);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 8px;
+        }
+
+        .live-team-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .live-score {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--1xbet-yellow);
+            text-align: center;
+        }
+
+        .live-over {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .bet-now-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--1xbet-blue), #42A5F5);
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: transform 0.3s;
+        }
+
+        .bet-now-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Teams Section */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .team-card {
+            background: var(--1xbet-card);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--1xbet-blue);
+        }
+
+        .team-logo {
+            width: 70px;
+            height: 70px;
+            background: var(--1xbet-lighter);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            margin: 0 auto 15px;
+        }
+
+        .team-name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* App Download */
+        .app-section {
+            background: linear-gradient(135deg, var(--1xbet-card), var(--1xbet-lighter));
+            border-radius: 25px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(30, 136, 229, 0.2) 0%, transparent 70%);
+        }
+
+        .app-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .app-title .blue { color: var(--1xbet-blue); }
+
+        .app-subtitle {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .app-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--1xbet-dark);
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .app-btn:hover {
+            transform: scale(1.05);
+            border-color: var(--1xbet-blue);
+        }
+
+        .app-btn-icon {
+            font-size: 32px;
+        }
+
+        .app-btn-text {
+            text-align: left;
+        }
+
+        .app-btn-text small {
+            display: block;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .app-btn-text strong {
+            font-size: 16px;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--1xbet-card);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--1xbet-blue);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: var(--1xbet-blue);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        /* Promotions */
         .promotions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -204,7 +610,7 @@
         }
 
         .promo-card {
-            background: var(--card-bg);
+            background: var(--1xbet-card);
             border-radius: 20px;
             overflow: hidden;
             transition: transform 0.3s;
@@ -217,26 +623,33 @@
 
         .promo-image {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: linear-gradient(45deg, #1a1a2e, #2a2a4e);
+            height: 180px;
+            background: linear-gradient(45deg, var(--1xbet-lighter), var(--1xbet-card));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
         }
 
         .promo-content {
             padding: 20px;
         }
 
-        .promo-date {
-            font-size: 12px;
-            color: var(--primary);
-            margin-bottom: 8px;
+        .promo-badge {
+            display: inline-block;
+            background: var(--1xbet-yellow);
+            color: var(--1xbet-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         .promo-title {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
-            line-height: 1.4;
         }
 
         .promo-desc {
@@ -246,88 +659,43 @@
         }
 
         .promo-cta {
-            display: inline-block;
-            color: var(--primary);
+            color: var(--1xbet-blue);
             font-weight: 600;
             text-decoration: none;
         }
 
-        .promo-cta:hover {
-            color: var(--secondary);
-        }
-
-        /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
+        .promo-cta:hover { color: var(--1xbet-yellow); }
 
         /* Footer */
         footer {
-            background: var(--card-bg);
-            padding: 40px 20px;
+            background: var(--1xbet-card);
+            padding: 50px 20px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        footer p {
-            color: var(--text-muted);
-            font-size: 14px;
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 20px;
         }
 
         .footer-links {
-            margin-top: 20px;
+            margin: 25px 0;
         }
 
         .footer-links a {
             color: var(--text-muted);
             margin: 0 15px;
             text-decoration: none;
+            font-size: 14px;
         }
 
-        .footer-links a:hover {
-            color: var(--primary);
-        }
+        .footer-links a:hover { color: var(--1xbet-blue); }
 
-        /* Floating CTA */
-        .floating-cta {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 99;
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .floating-cta {
-                display: block;
-            }
-        }
-
-        /* Loading State */
-        .loading {
-            text-align: center;
-            padding: 40px;
+        .footer-copy {
             color: var(--text-muted);
+            font-size: 13px;
         }
 
         /* Branding Footer - Fixed Bottom Left */
@@ -335,22 +703,27 @@
             position: fixed;
             bottom: 0;
             left: 0;
-            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 70%, transparent 100%);
-            padding: 15px 20px;
+            background: linear-gradient(90deg, rgba(13,27,42,0.95) 0%, rgba(13,27,42,0.8) 60%, transparent 100%);
+            padding: 12px 20px;
             z-index: 98;
             display: flex;
             align-items: center;
             gap: 15px;
+            backdrop-filter: blur(10px);
         }
 
-        .branding-footer .promo-text {
-            font-size: 14px;
-            color: var(--text-light);
+        .branding-footer .promo-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .branding-footer .promo-code {
             font-size: 18px;
-            background: var(--gradient);
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--1xbet-yellow), #FFD54F);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -362,44 +735,74 @@
             padding-left: 15px;
         }
 
-        body {
-            padding-bottom: 80px;
+        body { padding-bottom: 70px; }
+
+        /* Mobile Nav */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .app-section { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
+    <!-- Live Banner -->
+    <div class="live-banner">
+        🔴 IPL 2026 LIVE - Bet Now & Win Big!
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-content">
-            <div class="logo">1xBet</div>
-            <a href="#" class="download-btn">Download App</a>
+            <div class="logo">
+                <span class="logo-blue">1</span><span class="logo-yellow">x</span><span class="logo-blue">Bet</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#live">Live</a></li>
+                <li><a href="#teams">Teams</a></li>
+                <li><a href="#promotions">Promotions</a></li>
+                <li><a href="#app">App</a></li>
+            </ul>
+            <a href="#app" class="download-btn">📱 Download</a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>🏏 IPL 2026 Special</h1>
-        <p class="subtitle">Download 1xBet App & Get Exclusive Cricket Bonuses!</p>
+        <div class="hero-content">
+            <h1><span class="blue">IPL</span> <span class="yellow">2026</span></h1>
+            <p class="subtitle">Download 1xBet App & Get Exclusive Cricket Bonuses!</p>
 
-        <div class="bonus-badge">
-            <div class="label">WELCOME BONUS</div>
-            <div class="amount">₹50,000</div>
-        </div>
+            <div class="bonus-badge">
+                <div class="label">Welcome Bonus</div>
+                <div class="amount">₹50,000</div>
+            </div>
 
-        <div class="cta-buttons">
-            <a href="#" class="btn btn-primary">📱 Download Now</a>
-            <a href="#promotions" class="btn btn-secondary">View Promotions</a>
-        </div>
+            <div class="cta-buttons">
+                <a href="#app" class="btn btn-primary">📱 Download Now</a>
+                <a href="#promotions" class="btn btn-secondary">View Promotions</a>
+            </div>
 
-        <div class="promo-code-section">
-            <h3>USE PROMO CODE</h3>
-            <div class="promo-code">INDIA1X</div>
+            <div class="promo-code-box">
+                <h3>Use Promo Code</h3>
+                <div class="promo-code">INDIA1X</div>
+            </div>
         </div>
     </section>
 
     <!-- Features -->
     <section class="section">
-        <h2 class="section-title">Why Choose 1xBet?</h2>
+        <h2 class="section-title">Why Choose <span class="blue">1xBet</span>?</h2>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🎁</div>
@@ -424,105 +827,302 @@
         </div>
     </section>
 
+    <!-- Schedule Section -->
+    <section class="section" id="schedule">
+        <h2 class="section-title">IPL <span class="yellow">2026</span> Schedule</h2>
+        <div class="schedule-grid">
+            <div class="match-card">
+                <div class="match-date">
+                    <div class="day">15</div>
+                    <div class="month">MAR</div>
+                </div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-icon">🏏</div>
+                        <span>MI</span>
+                    </div>
+                    <span class="vs">VS</span>
+                    <div class="team">
+                        <span>CSK</span>
+                        <div class="team-icon">🏏</div>
+                    </div>
+                </div>
+                <div class="match-time">8:00 PM</div>
+            </div>
+            <div class="match-card">
+                <div class="match-date">
+                    <div class="day">16</div>
+                    <div class="month">MAR</div>
+                </div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-icon">🏏</div>
+                        <span>RCB</span>
+                    </div>
+                    <span class="vs">VS</span>
+                    <div class="team">
+                        <span>KKR</span>
+                        <div class="team-icon">🏏</div>
+                    </div>
+                </div>
+                <div class="match-time">4:00 PM</div>
+            </div>
+            <div class="match-card">
+                <div class="match-date">
+                    <div class="day">17</div>
+                    <div class="month">MAR</div>
+                </div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-icon">🏏</div>
+                        <span>DC</span>
+                    </div>
+                    <span class="vs">VS</span>
+                    <div class="team">
+                        <span>SRH</span>
+                        <div class="team-icon">🏏</div>
+                    </div>
+                </div>
+                <div class="match-time">7:30 PM</div>
+            </div>
+            <div class="match-card">
+                <div class="match-date">
+                    <div class="day">18</div>
+                    <div class="month">MAR</div>
+                </div>
+                <div class="match-teams">
+                    <div class="team">
+                        <div class="team-icon">🏏</div>
+                        <span>LSG</span>
+                    </div>
+                    <span class="vs">VS</span>
+                    <div class="team">
+                        <span>GT</span>
+                        <div class="team-icon">🏏</div>
+                    </div>
+                </div>
+                <div class="match-time">8:00 PM</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Matches -->
+    <section class="section" id="live">
+        <h2 class="section-title">🔴 Live <span class="blue">Matches</span></h2>
+        <div class="live-grid" id="live-matches">
+            <div class="live-card">
+                <div class="live-card-header">
+                    <span class="live-dot"></span> LIVE
+                </div>
+                <div class="live-card-body">
+                    <div class="live-teams">
+                        <div class="live-team">
+                            <div class="live-team-icon">🔵</div>
+                            <div class="live-team-name">MI</div>
+                        </div>
+                        <div class="live-score">145/3</div>
+                        <div class="live-team">
+                            <div class="live-team-icon">🟡</div>
+                            <div class="live-team-name">CSK</div>
+                        </div>
+                    </div>
+                    <div class="live-over">14.2 overs</div>
+                    <button class="bet-now-btn">Bet Now @ 1.85</button>
+                </div>
+            </div>
+            <div class="live-card">
+                <div class="live-card-header">
+                    <span class="live-dot"></span> LIVE
+                </div>
+                <div class="live-card-body">
+                    <div class="live-teams">
+                        <div class="live-team">
+                            <div class="live-team-icon">🔴</div>
+                            <div class="live-team-name">RCB</div>
+                        </div>
+                        <div class="live-score">89/1</div>
+                        <div class="live-team">
+                            <div class="live-team-icon">🟣</div>
+                            <div class="live-team-name">KKR</div>
+                        </div>
+                    </div>
+                    <div class="live-over">11.5 overs</div>
+                    <button class="bet-now-btn">Bet Now @ 2.10</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teams Section -->
+    <section class="section" id="teams">
+        <h2 class="section-title">IPL <span class="yellow">Teams</span></h2>
+        <div class="teams-grid">
+            <div class="team-card">
+                <div class="team-logo">🔵</div>
+                <div class="team-name">Mumbai Indians</div>
+            </div>
+            <div class="team-card">
+                <div class="team-logo">🟡</div>
+                <div class="team-name">CSK</div>
+            </div>
+            <div class="team-card">
+                <div class="team-logo">🔴</div>
+                <div class="team-name">RCB</div>
+            </div>
+            <div class="team-card">
+                <div class="team-logo">🟣</div>
+                <div class="team-name">KKR</div>
+            </div>
+            <div class="team-card">
+                <div class="team-logo">🟠</div>
+                <div class="team-name">SRH</div>
+            </div>
+            <div class="team-card">
+                <div class="team-logo">🟢</div>
+                <div class="team-name">DC</div>
+            </div>
+            <div class="team-card">
+                <div class="team-logo">🔵</div>
+                <div class="team-name">GT</div>
+            </div>
+            <div class="team-card">
+                <div class="team-logo">🟠</div>
+                <div class="team-name">LSG</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Promotions Section -->
     <section class="section" id="promotions">
-        <h2 class="section-title">🔥 Latest Promotions</h2>
+        <h2 class="section-title">🔥 Latest <span class="blue">Promotions</span></h2>
         <div id="promotions-container" class="promotions-grid">
-            <div class="loading">Loading latest promotions...</div>
+            <!-- Telegram se data yahan aayega -->
+            <div class="promo-card">
+                <div class="promo-image">🎉</div>
+                <div class="promo-content">
+                    <span class="promo-badge">IPL SPECIAL</span>
+                    <h3 class="promo-title">Get 300% Bonus on First Deposit</h3>
+                    <p class="promo-desc">New users get up to ₹50,000 bonus on first deposit.</p>
+                    <a href="#app" class="promo-cta">Claim Now →</a>
+                </div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-image">🏏</div>
+                <div class="promo-content">
+                    <span class="promo-badge">CASHBACK</span>
+                    <h3 class="promo-title">10% Cashback on Every IPL Bet</h3>
+                    <p class="promo-desc">Get 10% cashback on all IPL match bets.</p>
+                    <a href="#app" class="promo-cta">Claim Now →</a>
+                </div>
+            </div>
+            <div class="promo-card">
+                <div class="promo-image">🎰</div>
+                <div class="promo-content">
+                    <span class="promo-badge">FREE SPINS</span>
+                    <h3 class="promo-title">50 Free Spins on IPL Slots</h3>
+                    <p class="promo-desc">Spin and win on cricket-themed slot games.</p>
+                    <a href="#app" class="promo-cta">Claim Now →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="section" id="app">
+        <div class="app-section">
+            <div class="app-content">
+                <h2 class="app-title">Download <span class="blue">1xBet</span> App</h2>
+                <p class="app-subtitle">Best betting experience on your device</p>
+
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <div class="app-btn-icon">📱</div>
+                        <div class="app-btn-text">
+                            <small>Download for</small>
+                            <strong>Android</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="app-btn">
+                        <div class="app-btn-icon">🍎</div>
+                        <div class="app-btn-text">
+                            <small>Download for</small>
+                            <strong>iOS</strong>
+                        </div>
+                    </a>
+                    <a href="#" class="app-btn">
+                        <div class="app-btn-icon">💻</div>
+                        <div class="app-btn-text">
+                            <small>Access via</small>
+                            <strong>Web</strong>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="promo-code-box" style="margin-top: 30px;">
+                    <h3>Use Promo Code</h3>
+                    <div class="promo-code">INDIA1X</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 1xBet. All rights reserved.</p>
+        <div class="footer-logo">
+            <span class="logo-blue">1</span><span class="logo-yellow">x</span><span class="logo-blue">Bet</span>
+        </div>
         <div class="footer-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms & Conditions</a>
             <a href="#">Responsible Gaming</a>
+            <a href="#">Contact Us</a>
         </div>
+        <p class="footer-copy">&copy; 2026 1xBet. All rights reserved. 18+ Only.</p>
     </footer>
 
     <!-- Branding Footer - Fixed Bottom Left -->
     <div class="branding-footer">
         <div>
-            <div class="promo-text">Use Code:</div>
+            <div class="promo-label">Use Code</div>
             <div class="promo-code">INDIA1X</div>
         </div>
         <div class="website-name">1xbetapp.one</div>
     </div>
 
-    <!-- Floating CTA for Mobile -->
-    <div class="floating-cta">
-        <a href="#" class="btn btn-primary">📱 Download</a>
-    </div>
-
     <script>
-        // Fetch promotions from API (n8n endpoint)
-        // Replace this URL with your n8n webhook or JSON endpoint
-        const API_URL = 'https://your-n8n-webhook.com/promotions';
+        // Telegram API se promotions fetch karne ka code
+        // Isse n8n webhook replace karna
+        const TELEGRAM_API = 'https://your-n8n-webhook.com/telegram-posts';
 
-        async function loadPromotions() {
+        async function loadTelegramPromotions() {
             const container = document.getElementById('promotions-container');
 
             try {
-                const response = await fetch(API_URL);
-                if (!response.ok) throw new Error('Failed to fetch');
+                const response = await fetch(TELEGRAM_API);
+                if (!response.ok) throw new Error('API Error');
 
-                const promotions = await response.json();
+                const posts = await response.json();
 
-                if (!promotions || promotions.length === 0) {
-                    container.innerHTML = '<p style="text-align:center;color:#a0a0a0;">No promotions available right now. Check back soon!</p>';
-                    return;
+                if (posts && posts.length > 0) {
+                    container.innerHTML = posts.map(post => `
+                        <div class="promo-card">
+                            <div class="promo-image">${post.emoji || '🎉'}</div>
+                            <div class="promo-content">
+                                <span class="promo-badge">${post.badge || 'PROMO'}</span>
+                                <h3 class="promo-title">${post.title}</h3>
+                                <p class="promo-desc">${post.description}</p>
+                                <a href="#app" class="promo-cta">Claim Now →</a>
+                            </div>
+                        </div>
+                    `).join('');
                 }
-
-                container.innerHTML = promotions.map(promo => `
-                    <div class="promo-card">
-                        <img src="${promo.image}" alt="${promo.title}" class="promo-image" onerror="this.style.display='none'">
-                        <div class="promo-content">
-                            <div class="promo-date">${promo.date || 'New'}</div>
-                            <h3 class="promo-title">${promo.title}</h3>
-                            <p class="promo-desc">${promo.description || ''}</p>
-                            <a href="#" class="promo-cta">Claim Now →</a>
-                        </div>
-                    </div>
-                `).join('');
             } catch (error) {
-                console.log('Using demo promotions');
-                // Demo data - replace with actual API
-                container.innerHTML = `
-                    <div class="promo-card">
-                        <div class="promo-image" style="display:flex;align-items:center;justify-content:center;font-size:48px;">🎉</div>
-                        <div class="promo-content">
-                            <div class="promo-date">IPL 2026 Special</div>
-                            <h3 class="promo-title">Get 300% Bonus on First Deposit</h3>
-                            <p class="promo-desc">New users get up to ₹50,000 bonus on first deposit.</p>
-                            <a href="#" class="promo-cta">Claim Now →</a>
-                        </div>
-                    </div>
-                    <div class="promo-card">
-                        <div class="promo-image" style="display:flex;align-items:center;justify-content:center;font-size:48px;">🏏</div>
-                        <div class="promo-content">
-                            <div class="promo-date">Live Match</div>
-                            <h3 class="promo-title">Cashback on Every IPL Bet</h3>
-                            <p class="promo-desc">Get 10% cashback on all IPL match bets.</p>
-                            <a href="#" class="promo-cta">Claim Now →</a>
-                        </div>
-                    </div>
-                    <div class="promo-card">
-                        <div class="promo-image" style="display:flex;align-items:center;justify-content:center;font-size:48px;">🎰</div>
-                        <div class="promo-content">
-                            <div class="promo-date">Casino Special</div>
-                            <h3 class="promo-title">Free Spins on IPL Theme Slots</h3>
-                            <p class="promo-desc">50 free spins on cricket-themed slot games.</p>
-                            <a href="#" class="promo-cta">Claim Now →</a>
-                        </div>
-                    </div>
-                `;
+                console.log('Using default promotions');
             }
         }
 
-        // Load promotions on page load
-        loadPromotions();
+        // Load on page load
+        loadTelegramPromotions();
     </script>
 </body>
 </html>

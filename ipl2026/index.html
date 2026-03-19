@@ -3,114 +3,526 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPL 2026 - 1xBet App Download | Official</title>
-    <meta name="description" content="Download 1xBet IPL 2026 app. Best cricket betting experience with exclusive bonuses.">
+    <title>IPL 2026 - 1xBet App Download | Get ₹50,000 Bonus</title>
+    <meta name="description" content="Download 1xBet IPL 2026 app. Get exclusive ₹50,000 bonus, live betting on all IPL matches. Best cricket betting experience.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="IPL 2026 - 1xBet App Download | Get ₹50,000 Bonus">
+    <meta property="og:description" content="Download 1xBet IPL 2026 app. Get exclusive ₹50,000 bonus on first deposit.">
+    <meta property="og:type" content="website">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        :root {
+            --primary: #ff6b35;
+            --primary-dark: #e55a2b;
+            --secondary: #f7c531;
+            --dark-bg: #0a0a0f;
+            --card-bg: #14141f;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --gradient: linear-gradient(135deg, #ff6b35 0%, #f7c531 100%);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
             min-height: 100vh;
-            color: #fff;
         }
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ff6b35" stroke-width="2" opacity="0.3"/></svg>') center/200px no-repeat;
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .logo {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #ff6b35, #f7c531);
+            font-size: 24px;
+            font-weight: bold;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .subtitle {
+
+        .download-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, rgba(255,107,53,0.15) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .subtitle {
             font-size: 20px;
-            color: #aaa;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .bonus-badge {
+            display: inline-block;
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            padding: 15px 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .bonus-badge .label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .bonus-badge .amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 5px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(255, 107, 53, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Promo Code Section */
+        .promo-code-section {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            margin: 30px 20px;
+            border-radius: 15px;
+            border: 1px dashed var(--primary);
+        }
+
+        .promo-code-section h3 {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .promo-code {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary);
+            letter-spacing: 3px;
+        }
+
+        /* Promotions Grid */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
             margin-bottom: 40px;
         }
-        .cta-button {
-            display: inline-block;
-            padding: 18px 48px;
-            font-size: 20px;
-            font-weight: bold;
-            background: linear-gradient(90deg, #ff6b35, #ff8c42);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
-        }
-        .features {
+
+        .promotions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
-        .feature {
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
+
+        .promo-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .feature-icon {
-            font-size: 40px;
+
+        .promo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .promo-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(45deg, #1a1a2e, #2a2a4e);
+        }
+
+        .promo-content {
+            padding: 20px;
+        }
+
+        .promo-date {
+            font-size: 12px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .promo-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .promo-desc {
+            font-size: 14px;
+            color: var(--text-muted);
             margin-bottom: 15px;
         }
-        .feature h3 {
-            margin-bottom: 10px;
-            color: #ff6b35;
+
+        .promo-cta {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
         }
+
+        .promo-cta:hover {
+            color: var(--secondary);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
         footer {
+            background: var(--card-bg);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .floating-cta {
+                display: block;
+            }
+        }
+
+        /* Loading State */
+        .loading {
             text-align: center;
             padding: 40px;
-            color: #666;
+            color: var(--text-muted);
+        }
+
+        /* Branding Footer - Fixed Bottom Left */
+        .branding-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 70%, transparent 100%);
+            padding: 15px 20px;
+            z-index: 98;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .branding-footer .promo-text {
             font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .branding-footer .promo-code {
+            font-size: 18px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .branding-footer .website-name {
+            font-size: 12px;
+            color: var(--text-muted);
+            border-left: 1px solid var(--text-muted);
+            padding-left: 15px;
+        }
+
+        body {
+            padding-bottom: 80px;
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="logo">🏏</div>
-        <h1>IPL 2026 Special</h1>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">1xBet</div>
+            <a href="#" class="download-btn">Download App</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>🏏 IPL 2026 Special</h1>
         <p class="subtitle">Download 1xBet App & Get Exclusive Cricket Bonuses!</p>
-        <a href="#" class="cta-button">Download Now</a>
-    </div>
 
-    <div class="features">
-        <div class="feature">
-            <div class="feature-icon">🎁</div>
-            <h3>300% Welcome Bonus</h3>
-            <p>Get up to ₹50,000 on your first deposit</p>
+        <div class="bonus-badge">
+            <div class="label">WELCOME BONUS</div>
+            <div class="amount">₹50,000</div>
         </div>
-        <div class="feature">
-            <div class="feature-icon">📱</div>
-            <h3>Easy App</h3>
-            <p>Fast download for Android & iOS</p>
-        </div>
-        <div class="feature">
-            <div class="feature-icon">⚡</div>
-            <h3>Live Betting</h3>
-            <p>Bet in-play on all IPL matches</p>
-        </div>
-    </div>
 
+        <div class="cta-buttons">
+            <a href="#" class="btn btn-primary">📱 Download Now</a>
+            <a href="#promotions" class="btn btn-secondary">View Promotions</a>
+        </div>
+
+        <div class="promo-code-section">
+            <h3>USE PROMO CODE</h3>
+            <div class="promo-code">INDIA1X</div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section">
+        <h2 class="section-title">Why Choose 1xBet?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎁</div>
+                <h3>₹50,000 Bonus</h3>
+                <p>Get 300% welcome bonus on first deposit</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Withdrawals</h3>
+                <p>Fastest payout in the industry</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Best Odds</h3>
+                <p>Competitive odds on all IPL matches</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Secure</h3>
+                <p>Licensed and trusted platform</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section class="section" id="promotions">
+        <h2 class="section-title">🔥 Latest Promotions</h2>
+        <div id="promotions-container" class="promotions-grid">
+            <div class="loading">Loading latest promotions...</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 1xBet. Demo Page for Testing</p>
+        <p>&copy; 2026 1xBet. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Responsible Gaming</a>
+        </div>
     </footer>
+
+    <!-- Branding Footer - Fixed Bottom Left -->
+    <div class="branding-footer">
+        <div>
+            <div class="promo-text">Use Code:</div>
+            <div class="promo-code">INDIA1X</div>
+        </div>
+        <div class="website-name">1xbetapp.one</div>
+    </div>
+
+    <!-- Floating CTA for Mobile -->
+    <div class="floating-cta">
+        <a href="#" class="btn btn-primary">📱 Download</a>
+    </div>
+
+    <script>
+        // Fetch promotions from API (n8n endpoint)
+        // Replace this URL with your n8n webhook or JSON endpoint
+        const API_URL = 'https://your-n8n-webhook.com/promotions';
+
+        async function loadPromotions() {
+            const container = document.getElementById('promotions-container');
+
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Failed to fetch');
+
+                const promotions = await response.json();
+
+                if (!promotions || promotions.length === 0) {
+                    container.innerHTML = '<p style="text-align:center;color:#a0a0a0;">No promotions available right now. Check back soon!</p>';
+                    return;
+                }
+
+                container.innerHTML = promotions.map(promo => `
+                    <div class="promo-card">
+                        <img src="${promo.image}" alt="${promo.title}" class="promo-image" onerror="this.style.display='none'">
+                        <div class="promo-content">
+                            <div class="promo-date">${promo.date || 'New'}</div>
+                            <h3 class="promo-title">${promo.title}</h3>
+                            <p class="promo-desc">${promo.description || ''}</p>
+                            <a href="#" class="promo-cta">Claim Now →</a>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.log('Using demo promotions');
+                // Demo data - replace with actual API
+                container.innerHTML = `
+                    <div class="promo-card">
+                        <div class="promo-image" style="display:flex;align-items:center;justify-content:center;font-size:48px;">🎉</div>
+                        <div class="promo-content">
+                            <div class="promo-date">IPL 2026 Special</div>
+                            <h3 class="promo-title">Get 300% Bonus on First Deposit</h3>
+                            <p class="promo-desc">New users get up to ₹50,000 bonus on first deposit.</p>
+                            <a href="#" class="promo-cta">Claim Now →</a>
+                        </div>
+                    </div>
+                    <div class="promo-card">
+                        <div class="promo-image" style="display:flex;align-items:center;justify-content:center;font-size:48px;">🏏</div>
+                        <div class="promo-content">
+                            <div class="promo-date">Live Match</div>
+                            <h3 class="promo-title">Cashback on Every IPL Bet</h3>
+                            <p class="promo-desc">Get 10% cashback on all IPL match bets.</p>
+                            <a href="#" class="promo-cta">Claim Now →</a>
+                        </div>
+                    </div>
+                    <div class="promo-card">
+                        <div class="promo-image" style="display:flex;align-items:center;justify-content:center;font-size:48px;">🎰</div>
+                        <div class="promo-content">
+                            <div class="promo-date">Casino Special</div>
+                            <h3 class="promo-title">Free Spins on IPL Theme Slots</h3>
+                            <p class="promo-desc">50 free spins on cricket-themed slot games.</p>
+                            <a href="#" class="promo-cta">Claim Now →</a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Load promotions on page load
+        loadPromotions();
+    </script>
 </body>
 </html>

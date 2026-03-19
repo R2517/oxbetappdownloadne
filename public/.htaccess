@@ -1,28 +1,15 @@
-# Change YOUR_TOKEN to your prerender token
-# Change https://service.prerender.io/ (at the end of the last RewriteRule)
-# to http://localhost:3000/ when testing with a local prerender server
-
-<IfModule mod_headers.c>
-    RequestHeader set X-Prerender-Token "UngFUUE0KwA2SeO1gG0t"
-    RequestHeader set X-Prerender-Version "prerender-apache@2.0.0"
-</IfModule>
-
+# SPA Routing - serve index.html for all routes
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /
 
-    <IfModule mod_proxy_http.c>
-       RewriteCond %{HTTP_USER_AGENT} googlebot|adsbot-google|apis-google|mediapartners-google|google-safety|feedfetcher-google|googleproducer|google-site-verification|bingbot|yandexbot|yabrowser|yahoo|baiduspider|naver|seznambot|sznprohlizec|qwantbot|ecosia|duckduckbot|duckassistbot|applebot|facebookexternalhit|facebookcatalog|facebookbot|meta-externalagent|instagram|twitterbot|linkedinbot|whatsapp|slackbot|pinterest|pinterestbot|tiktok|tiktokspider|bytespider|discordbot|semrushbot|ahrefsbot|chrome-lighthouse|screaming-frog|oncrawlbot|botifybot|deepcrawl|lumar|rogerbot|dotbot|gptbot|chatgpt|oai-searchbot|chatgpt-user|claudebot|google-extended|perplexitybot|perplexity-user|youbot|amazonbot|anthropic-ai|claude-web|ccbot|mistralai-user|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest\/0\.|vkShare|W3C_Validator|redditbot|flipboard|tumblr|bitlybot|skypeuripreview|nuzzel|google\ page\ speed|qwantify|bitrix\ link\ preview|xing-contenttabreceiver|google-inspectiontool|telegrambot [NC,OR]
-        RewriteCond %{QUERY_STRING} _escaped_fragment_
-        RewriteCond %{REQUEST_URI} ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff|\.svg))
+    # Serve static files directly
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
 
-         RewriteRule ^(index\.html|index\.php)?(.*) https://service.prerender.io/%{REQUEST_SCHEME}://%{HTTP_HOST}/$2 [P,END]
-    </IfModule>
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
 
-    # --- Standard SPA routing ---
-    RewriteRule ^index\.html$ - [L]
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.html [L]
+    # Serve index.html for all other routes (SPA routing)
+    RewriteRule ^ /index.html [L]
 </IfModule>
-
-RewriteRule ^\.builds - [F,L]

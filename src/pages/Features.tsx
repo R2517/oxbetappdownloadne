@@ -5,7 +5,6 @@ import { ChevronRight, Trophy, Gamepad2, Users, Star, CreditCard, Zap, TrendingU
 import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/components/ScrollReveal";
 import { useGeo } from "@/contexts/GeoContext";
 import { getPageHero, getGeoSchema } from "@/lib/geo-content";
-import { CenterBanner } from "@/components/AffiliateBanners";
 
 const Features = () => {
   const { country } = useGeo();
@@ -38,7 +37,6 @@ const Features = () => {
         </div>
       </section>
 
-      <CenterBanner />
 
     {/* Sports Betting */}
     <section className="section-padding">
@@ -141,7 +139,6 @@ const Features = () => {
       </div>
     </section>
 
-    <CenterBanner />
 
     {/* Bonuses */}
     <section className="section-padding">

@@ -6,7 +6,6 @@ import { ScrollReveal, StaggerContainer, StaggerItem, GlowOnScroll } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useGeo } from "@/contexts/GeoContext";
 import { getPageHero, getGeoSchema } from "@/lib/geo-content";
-import { CenterBanner } from "@/components/AffiliateBanners";
 import paymentsHero from "@/assets/payments-hero.jpg";
 
 const depositMethods = [
@@ -80,7 +79,6 @@ const Payments = () => {
         </div>
       </section>
 
-      <CenterBanner />
 
     {/* Hero Image */}
     <section className="section-padding">
@@ -247,7 +245,6 @@ const Payments = () => {
       </div>
     </section>
 
-    <CenterBanner />
 
     {/* FAQ */}
     <section className="section-padding">
